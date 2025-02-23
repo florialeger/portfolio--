@@ -16,6 +16,7 @@ export default function ThemeSwitcher({ setTheme }) {
     setCurrentTheme(theme);
     setTheme(theme);
     setIsOpen(false); // Close the animation after selecting a theme
+    setIsHovered(false); // Stop the magnetic effect
   };
 
   const toggleOpen = (e) => {
@@ -40,8 +41,10 @@ export default function ThemeSwitcher({ setTheme }) {
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
         themeSwitcherRef.current.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+        themeSwitcherRef.current.style.transition = "transform 0.5s ease"; // Add transition for smooth effect
       } else if (themeSwitcherRef.current) {
         themeSwitcherRef.current.style.transform = `translate(0, 0)`;
+        themeSwitcherRef.current.style.transition = "transform 0.5s ease"; // Add transition for smooth effect
       }
     };
 
