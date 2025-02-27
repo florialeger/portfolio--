@@ -1,0 +1,51 @@
+.text {
+    font-family: var(--font-family-body);
+    color: var(---text-default);
+    line-height: var(--line-height-default);
+    font-size: var(--font-size-primary);
+  }
+  
+  .text.h1 {
+    font-family: var(--font-family-headline);
+    font-size: var(--font-size-headline);
+    font-weight: var(--font-weight-bold);
+  }
+  
+  .text.h2 {
+    font-family: var(--font-family-subheadline);
+    font-size: var(--font-size-subheadline);
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  .text.date {
+    font-family: "Monda", var(--font-family-date);
+    font-size: var(--font-size-primary);
+    color: var(--text-secondary);
+  }
+  
+  .text.key-info {
+    font-family: "Monda", var(--font-family-date);
+    font-size: 1em;
+    font-weight: var(--font-weight-bold);
+    color: var(--text-secondary);
+  }
+  
+  .cursor {
+    display: inline-block;
+    margin-left: 2px;
+    width: calc(max(3.5px, 0.1em));
+    height: var(--font-size-primary);
+    background-color: currentColor;
+    color: var(---text-default);
+  }
+  
+  .cursor.blinking {
+    animation: blink 0.7s steps(1) infinite;
+  }
+  
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  

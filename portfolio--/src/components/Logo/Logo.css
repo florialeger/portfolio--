@@ -1,0 +1,22 @@
+.rectangle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  aspect-ratio: 1;
+  border-radius: 1.25em;
+  transition: background-color 0.5s ease
+}
+
+
+.rectangle.figma {
+  background: var(--icon-figma-bg);
+}
+
+.rectangle.code {
+  background:  var(--icon-code-bg);
+}
+
+.rectangle.procreate {
+  background:  var(--icon-procreate-bg);
+}

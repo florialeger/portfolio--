@@ -1,0 +1,24 @@
+.svg-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: max(40%, 366px);
+    margin: 2em auto;
+  }
+  
+  .svg-wrapper {
+    position: relative;
+    width: 80px;
+    height: 82px;
+  }
+  
+  .magnetic-svg {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  
+  .magnetic-svg:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+  }

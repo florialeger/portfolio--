@@ -1,0 +1,37 @@
+.about-container {
+    display: flex;
+    flex-direction: column;
+    min-width: calc(402px - 32px);
+    margin: 2em 8em;
+  }
+  
+  .about-content-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: max(5em, 32px);
+    transition: all 1s ease;
+
+  }
+  
+  .about-text-container {
+    display: flex;
+    flex-direction: column;
+    width: max(60%, calc(100% - 20em));
+    transition: all 1s ease;
+  }
+  
+  @media (max-width: 1000px) {
+    .about-content-container {
+      flex-direction: column-reverse; 
+      align-items: center;
+    }
+
+    .about-text-container {
+        width: 90%
+      }
+
+      .about-container {
+        margin: 1em 1.5em;
+      }
+  }

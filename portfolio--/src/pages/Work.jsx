@@ -1,10 +1,10 @@
 import React from "react";
+import {Text}  from "../components/Text/Text";
 
 function Work() {
   return (
     <div>
-      <h1>Work</h1>
-      <p>Welcome to the Work page!</p>
+      <Text type="h1" children={[`Work`]} />
     </div>
   );
 }

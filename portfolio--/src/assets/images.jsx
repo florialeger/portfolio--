@@ -1,0 +1,95 @@
+import bde from './img/BDE.jpg';
+import boxe from './img/boxe.jpg';
+import boxe2 from './img/boxe2.jpg';
+import boxe3 from './img/boxe3.JPEG';
+import chat from './img/chat.jpg';
+import chatboite from './img/chatBoite.jpg';
+import cheval from './img/cheval.jpg';
+import chevalier from './img/chevalier.jpg';
+import chouette from './img/chouette.jpg';
+import coralamar from './img/Coralamar.jpg';
+import corbeau from './img/corbeau.jpg';
+import crocodile from './img/crocodile.jpg';
+import ellie from './img/ellie.jpg';
+import filet from './img/filet.jpg';
+import guitare from './img/guitare.jpg';
+import jeuneChevre from './img/jeuneChevre.jpg';
+import jeuneEllie from './img/jeuneEllie.jpg';
+import jeuneGun from './img/jeuneGun.jpg';
+import lievre from './img/lievre.jpg';
+import loutre from './img/loutre.jpg';
+import main1 from './img/main1.jpg';
+import main2 from './img/main2.jpg';
+import main3 from './img/main3.jpg';
+import main4 from './img/main4.jpg';
+import main5 from './img/main5.jpg';
+import marcy from './img/marcy.png';
+import miifamily from './img/mii-family.jpg';
+import miisat from './img/mii-sat.jpg';
+import pigeon from './img/pigeon.jpg';
+import pipe from './img/pipe.jpg';
+import planche1 from './img/planche1.jpg';
+import planche2 from './img/planche2.jpg';
+import planche3 from './img/planche3.jpg';
+import poisson from './img/poisson.jpg';
+import portrait from './img/portrait.jpg';
+import portrait2 from './img/portrait2.jpg';
+import profil from './img/profil.jpg';
+import raton from './img/raton.jpg';
+import rock from './img/rock.jpg';
+import soldat from './img/soldat.jpg';
+import spider from './img/spider.jpg';
+import star from './img/star.jpg';
+import torse from './img/Torse.jpg';
+import vi from './img/vi.jpg';
+
+export const Images = [
+  { url: bde },
+  { url: boxe },
+  { url: boxe1 },
+  { url: boxe2 },
+  { url: boxe3 },
+  { url: chat },
+  { url: chatboite },
+  { url: cheval },
+  { url: chevalier },
+  { url: chouette },
+  { url: coralamar },
+  { url: corbeau },
+  { url: crocodile },
+  { url: ellie },
+  { url: filet },
+  { url: guitare },
+  { url: jeuneChevre },
+  { url: jeuneEllie },
+  { url: jeuneGun },
+  { url: lievre },
+  { url: loutre },
+  { url: main1 },
+  { url: main2 },
+  { url: main3 },
+  { url: main4 },
+  { url: main5 },
+  { url: marcy },
+  { url: miifamily },
+  { url: miime },
+  { url: miisat },
+  { url: mii },
+  { url: pigeon },
+  { url: pipe },
+  { url: planche1 },
+  { url: planche2 },
+  { url: planche3 },
+  { url: poisson },
+  { url: portrait },
+  { url: portrait2 },
+  { url: poulet },
+  { url: profil },
+  { url: raton },
+  { url: rock },
+  { url: soldat },
+  { url: spider },
+  { url: star },
+  { url: torse },
+  { url: vi },
+];
