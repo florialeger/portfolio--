@@ -36,6 +36,7 @@ function BackgroundSlider({ activeIndex, linkRefs, hoveredIndex }) {
         width: activeLinkRef ? activeLinkRef.offsetWidth : 0,
       }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      style={{ background: "var(--backgroundNavLinks)" }}
     />
   );
 }
@@ -53,17 +54,26 @@ function Arrow({ path, hovered }) {
   );
 }
 
-const NavLink = ({ path, isActive, hovered, setHovered, refProp }) => (
+const NavLink = ({ path, isActive, hovered, setHovered, refProp, index, setHoveredIndex }) => (
   <li
     className={`nav-link ${isActive(path) ? "active" : ""}`}
-    onMouseEnter={() => setHovered(path)}
-    onMouseLeave={() => setHovered(null)}
+    onMouseEnter={() => {
+      setHovered(path);
+      setHoveredIndex(index);
+    }}
+    onMouseLeave={() => {
+      setHovered(null);
+      setHoveredIndex(null);
+    }}
     ref={refProp}
   >
-    <Link to={path}>{path.replace("/", "").toUpperCase()}</Link>
-    <Arrow/>
+    <Link to={path} className="nav-link-content">
+      {path.replace("/", "").toUpperCase()}
+      <Arrow path={path} hovered={hovered} />
+    </Link>
   </li>
 );
+
 
 const NavHome = ({ isActive, closeNav }) => {
   return (
@@ -77,11 +87,15 @@ const NavHome = ({ isActive, closeNav }) => {
   );
 };
 
+
+
 const NavRightLinks = ({ isActive, hovered, setHovered }) => {
   const location = useLocation();
   const activePath = location.pathname;
   const linkRefs = navItems.slice(1).map(() => useRef(null));
-  const activeIndex = navItems.slice(1).findIndex((item) => item.path === activePath);
+  const activeIndex = navItems
+    .slice(1)
+    .findIndex((item) => item.path === activePath);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
@@ -93,22 +107,16 @@ const NavRightLinks = ({ isActive, hovered, setHovered }) => {
       />
       <ul className="nav-links nav-right">
         {["/work", "/playground", "/about"].map((path, index) => (
-          <li
+          <NavLink
             key={path}
-            className={`nav-link ${isActive(path) ? "active" : ""}`}
-            onMouseEnter={() => {
-              setHoveredIndex(index);
-              setHovered(path);
-            }}
-            onMouseLeave={() => {
-              setHoveredIndex(null);
-              setHovered(null);
-            }}
-            ref={linkRefs[index]}
-          >
-            <Link to={path}>{path.replace("/", "").toUpperCase()}</Link>
-            <Arrow path={path} hovered={hovered} />
-          </li>
+            path={path}
+            isActive={isActive}
+            hovered={hovered}
+            setHovered={setHovered}
+            refProp={linkRefs[index]}
+            index={index}
+            setHoveredIndex={setHoveredIndex}
+          />
         ))}
       </ul>
     </div>
@@ -117,7 +125,7 @@ const NavRightLinks = ({ isActive, hovered, setHovered }) => {
 
 const MenuIcon = ({ toggleNav, isNavOpen }) => {
   const styleDefault = "var(--gray-300)";
-  const styleActive = "var(--color-primary-0)";
+  const styleActive = "var(--colorPrimary0)";
 
   return (
     <div className="menu-icon" onClick={toggleNav}>
@@ -172,7 +180,7 @@ const MenuButton = ({ toggleNav, isNavOpen, currentPage }) => {
       style={{
         background: isNavOpen ? "var(--button-navbar-reduced)" : "transparent",
 
-        color: isNavOpen ? "var(--color-primary-0)" : "var(--gray-300)",
+        color: isNavOpen ? "var(--colorPrimary0)" : "var(--gray-300)",
       }}
     >
       <div className="menu-button" onClick={toggleNav}>
@@ -257,8 +265,8 @@ const Navigation = () => {
       {!isReduced && <BlurOverlay isReduced={isReduced} />}
       <Squircle
         className={`nav-container ${isNavOpen ? "active" : ""}`}
-        cornerRadius={24}
-        cornerSmoothing={0.6}
+        cornerRadius={isReduced ? 24 : 0}
+        cornerSmoothing={isReduced ? 0.6 : 0}
       >
         {!isReduced && (
           <>

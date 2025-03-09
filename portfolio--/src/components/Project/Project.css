@@ -1,0 +1,91 @@
+.project-display {
+  width: 80%;
+  padding: 1em;
+  background-color: var(--backgroundMain);
+}
+
+.project-display-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-display-container:focus,
+.project-display-container:active {
+  outline: none; /* Ajouté pour supprimer l'outline */
+}
+
+.project-top-infos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+.project-top-infos-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-bottom-infos {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.project-display img {
+  width: 100%;
+  aspect-ratio: 1.7;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 1.5em;
+  background: var(--backgroundPhoto);
+  box-shadow: var(--shadows--normal);
+  height: auto;
+}
+.project-detail img {
+  width: 100%;
+  aspect-ratio: 1.7;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 1.5em;
+  background: var(--backgroundPhoto);
+  box-shadow: var(--shadows--normal);
+  height: auto;
+}
+
+.secondary-images-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+
+.secondary-images-grid img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.secondary-images-grid img:nth-child(1) {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.secondary-images-grid img:nth-child(2) {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.secondary-images-grid img:nth-child(3) {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+.navigation-buttons a {
+  text-decoration: none;
+  color: var(--textLinkReadMore);
+}

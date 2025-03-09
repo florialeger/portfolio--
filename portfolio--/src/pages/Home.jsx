@@ -22,6 +22,7 @@ function Home() {
         alignItems: "start",
         maxWidth: "1100px",
         width: "80%",
+        height : "100%",
         margin: "0 auto",
         paddingTop: "max(10vw, 24px)",
       }}
@@ -29,7 +30,7 @@ function Home() {
       <FadeIn duration={0.6} delay={0}>
         <MotionText
           type="h1"
-          strings={["Hi, I'm Floria, a student in UX."]}
+          strings={["Hi, I'm Floria, a student in UX design."]}
           style={{ marginBottom: "calc(1vw + 16px)" }}
         />
       </FadeIn>

@@ -24,7 +24,7 @@ export const MotionText = ({ type, strings, className, ...props }) => {
 };
 
 Text.propTypes = MotionText.propTypes = {
-  type: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6", "p", "span"]),
+  type: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6", "p", "span", "a"]),
   children: PropTypes.node,
   className: PropTypes.string,
 };

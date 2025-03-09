@@ -9,7 +9,11 @@ function About() {
     <div className="about-container">
       <FadeIn duration={0.6} delay={0}>
         {" "}
-        <Text type="h1" children={[`About Me...`]} style={{marginBottom: "calc(1vw + 16px)"}}/>
+        <Text
+          type="h1"
+          children={[`About Me...`]}
+          style={{ marginBottom: "calc(1vw + 16px)" }}
+        />
       </FadeIn>
 
       <FadeIn duration={0.8} delay={0.1}>

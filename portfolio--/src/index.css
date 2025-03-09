@@ -47,56 +47,55 @@
   --font-size-tertiary: 0.875em;
 
     /* Palette principale */
-  --color-primary-0: rgba(252, 252, 252, 1);
-  --color-primary-1: rgba(243, 188, 80, 1);
-  --color-primary-2: rgba(252, 191, 73, 1);
-  --color-primary-3: rgba(250, 149, 0, 1);
-  --color-primary-4: rgba(235, 100, 36, 1);
-  --color-primary-5: rgba(214, 40, 40, 1);
-
-  --color-accent: rgba(253, 201, 100, 1);
-
+    --colorPrimary0: rgba(252, 252, 252, 1);
+    --colorPrimary1: rgba(243, 188, 80, 1);
+    --colorPrimary2: rgba(252, 191, 73, 1);
+    --colorPrimary3: rgba(250, 149, 0, 1);
+    --colorPrimary4: rgba(235, 100, 36, 1);
+    --colorPrimary5: rgba(214, 40, 40, 1);
   
+    --colorAccent: rgba(253, 201, 100, 1);
 
-  --background-main: linear-gradient(to bottom, var(--color-primary-0), rgba(248, 248, 248, 1));
-  --background-invert: linear-gradient(to bottom, var(--gray-900), rgba(54, 54, 54, 1));
-  --background-playground: linear-gradient(to bottom, var(--color-accent), var(--color-primary-1));
-  --background-photo: rgba(255, 255, 255, 1);
+    --backgroundMain: linear-gradient(to bottom, var(--colorPrimary0), rgba(248, 248, 248, 1));
+    --backgroundTheme: var(--colorPrimary0),
+    --backgroundInvert: linear-gradient(to bottom, var(--gray-900), rgba(54, 54, 54, 1));
+    --backgroundPlayground: linear-gradient(to bottom, var(--colorAccent), var(--colorPrimary1));
+    --backgroundPhoto: rgba(255, 255, 255, 1);
+    --backgroundNavLinks: var(--gray-200);
+  
+    --textDefault: rgba(51, 51, 51, 1);
+    --textInverted: rgba(241, 240, 237, 1);
+    --textPlaygroundInactive: rgba(180, 138, 56, 1);
+    --textWhite: rgba(255, 255, 255, 1);
+    --textLinkReadMore: rgba(6, 167, 226, 1);
+    --textLinkExternal: rgba(53, 41, 181, 1);
+    --textSecondary: rgba(113, 113, 113, 1);
+    --textTertiary: rgb(188, 188, 188);
 
-  --text-default: rgba(51, 51, 51, 1);
-  --text-inverted: rgba(241, 240, 237, 1);
-  --text-playground-inactive: rgba(180, 138, 56, 1);
-  --text-white: rgba(255, 255, 255, 1);
-  --text-link-read-more: rgba(6, 167, 226, 1);
-  --text-link-external: rgba(53, 41, 181, 1);
-  --text-secondary: rgba(113, 113, 113, 1);
-  --text-tertiary: rgb(188, 188, 188);
+    --buttonNavbarReduced: linear-gradient(to bottom, var(--colorPrimary2), var(--colorPrimary4));
+    --buttonProjectBg: var(--colorPrimary4);
+    --buttonProjectBorder: rgba(237, 129, 78, 1);
+    --buttonBackBg: var(--colorSecondary);
+    --buttonBackBorder: rgba(114, 140, 175, 1);
+    --buttonResumeBg: linear-gradient(
+      to bottom,
+      rgba(51, 51, 51, 1),
+      rgba(46, 46, 46, 1)
+    );
+    --buttonResumeBorder: linear-gradient(
+      to bottom,
+      rgba(45, 45, 45, 1),
+      rgba(33, 33, 33, 1)
+    );
+    --carouselInactive: rgba(241, 241, 241, 1);
+    --carouselActive: var(--colorPrimary4);
+  
+    --iconProcreateBg: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+    --iconCodeBg: linear-gradient(to bottom, #f26522, #d9541a);
+    --iconFigmaBg: linear-gradient(to bottom, #1e1e1e, #1a1a1a);
 
-  --button-navbar-reduced : linear-gradient(to bottom, var(--color-primary-2), var(--color-primary-4));
-  --button-project-bg: var(--color-primary-4);
-  --button-project-border: rgba(237, 129, 78, 1);
-  --button-back-bg: var(--color-secondary);
-  --button-back-border: rgba(114, 140, 175, 1);
-  --button-resume-bg: linear-gradient(
-    to bottom,
-    rgba(51, 51, 51, 1),
-    rgba(46, 46, 46, 1)
-  );
-  --button-resume-border: linear-gradient(
-    to bottom,
-    rgba(45, 45, 45, 1),
-    rgba(33, 33, 33, 1)
-  );
-
-  --carousel-inactive: rgba(241, 241, 241, 1);
-  --carousel-active: var(--color-primary-4);
-
-  --icon-procreate-bg: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
-  --icon-code-bg: linear-gradient(to bottom, #f26522, #d9541a);
-  --icon-figma-bg: linear-gradient(to bottom, #1e1e1e, #1a1a1a);
-
-  --gray-100: rgba(245, 245, 245, 1); 
-  --gray-200: rgba(230, 230, 230, 1);
+  --gray-100: rgb(245, 245, 245); 
+  --gray-200: rgb(230, 230, 230);
   --gray-300: rgba(204, 204, 204, 1);
   --gray-400: rgba(179, 179, 179, 1);
   --gray-500: rgba(153, 153, 153, 1); 
@@ -106,33 +105,32 @@
   --gray-900: rgba(51, 51, 51, 1);
   --gray-1000: rgba(26, 26, 26, 1); 
 
-
   --shadows--normal: 0px 0px 0px rgba(0, 0, 0, 0.06),
     0px 1px 1px -1px rgba(0, 0, 0, 0.06), 0px 3px 3px -1px rgba(0, 0, 0, 0.06),
     0px 6px 6px -3px rgba(0, 0, 0, 0.06), 0px 12px 12px -6px rgba(0, 0, 0, 0.05),
     0px 24px 24px -12px rgba(0, 0, 0, 0);
 
-  --system-shadowsOutline: 0.3px 0.4px 0 var(--primary-text-color),
-    -0.3px -0.4px 0 var(--primary-text-color),
-    -0.3px -0.3px 0 var(--primary-text-color),
-    -0.3px -0.2px 0 var(--primary-text-color),
-    -0.3px -0.1px 0 var(--primary-text-color),
-    -0.3px 0.4px 0 var(--primary-text-color),
-    0.3px -0.4px 0 var(--primary-text-color),
-    0.3px -0.3px 0 var(--primary-text-color),
-    0.3px -0.2px 0 var(--primary-text-color),
-    0.3px -0.1px 0 var(--primary-text-color);
+  --system-shadowsOutline: 0.3px 0.4px 0 var(--textDefault),
+    -0.3px -0.4px 0 var(--textDefault),
+    -0.3px -0.3px 0 var(--textDefault),
+    -0.3px -0.2px 0 var(--textDefault),
+    -0.3px -0.1px 0 var(--textDefault),
+    -0.3px 0.4px 0 var(--textDefault),
+    0.3px -0.4px 0 var(--textDefault),
+    0.3px -0.3px 0 var(--textDefault),
+    0.3px -0.2px 0 var(--textDefault),
+    0.3px -0.1px 0 var(--textDefault);
 
-  --system-shadowsOutline-invert: 0.3px 0.4px 0 var(--primary-text-color),
-    -0.3px -0.4px 0 var(--color-primary-0:),
-    -0.3px -0.3px 0 var(--color-primary-0:),
-    -0.3px -0.2px 0 var(---color-primary-0:),
-    -0.3px -0.1px 0 var(--color-primary-0:),
-    -0.3px 0.4px 0 var(--color-primary-0:),
-    0.3px -0.4px 0 var(--color-primary-0:),
-    0.3px -0.3px 0 var(--color-primary-0:),
-    0.3px -0.2px 0 var(--color-primary-0:),
-    0.3px -0.1px 0 var(--color-primary-0:);
+  --system-shadowsOutline-invert: 0.3px 0.4px 0 var(--colorPrimary0),
+    -0.3px -0.4px 0 var(--colorPrimary0),
+    -0.3px -0.3px 0 var(--colorPrimary0),
+    -0.3px -0.2px 0 var(---colorPrimary0),
+    -0.3px -0.1px 0 var(--colorPrimary0),
+    -0.3px 0.4px 0 var(--colorPrimary0),
+    0.3px -0.4px 0 var(--colorPrimary0),
+    0.3px -0.3px 0 var(--colorPrimary0),
+    0.3px -0.2px 0 var(--colorPrimary0),
+    0.3px -0.1px 0 var(--colorPrimary0);
 
   --system-shadows-3d: inset 0 -1px 1px 0 rgba(0, 0, 0, 0.15),
     inset 0 -2px 4px rgba(0, 0, 0, 0.15),
@@ -165,18 +163,20 @@ html {
   padding: 0;
   min-width: 320px;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 }
 
 body {
   display: flex;
+  flex-direction: column;
   min-width: 320px;
   min-height: 100vh;
-  background-color: var(--background-color);
-  color: var(--primary-text-color);
+  height: 100%;
+  background: var(--backgroundMain);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--textDefault);
   overflow-x: hidden;
-
-  transition: --background-color 0.5s ease;
 }
 
 button,

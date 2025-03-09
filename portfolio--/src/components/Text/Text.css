@@ -1,6 +1,6 @@
 .text {
     font-family: var(--font-family-body);
-    color: var(---text-default);
+    color: var(---textDefault);
     line-height: var(--line-height-default);
     font-size: var(--font-size-primary);
   }
@@ -18,16 +18,16 @@
   }
   
   .text.date {
-    font-family: "Monda", var(--font-family-date);
+    font-family: var(--font-family-date);
     font-size: var(--font-size-primary);
-    color: var(--text-secondary);
+    color: var(--textSecondary);
   }
   
   .text.key-info {
-    font-family: "Monda", var(--font-family-date);
+    font-family: var(--font-family-date);
     font-size: 1em;
     font-weight: var(--font-weight-bold);
-    color: var(--text-secondary);
+    color: var(--textSecondary);
   }
   
   .cursor {
@@ -36,7 +36,7 @@
     width: calc(max(3.5px, 0.1em));
     height: var(--font-size-primary);
     background-color: currentColor;
-    color: var(---text-default);
+    color: var(---textDefault);
   }
   
   .cursor.blinking {

@@ -10,13 +10,13 @@
 
 
 .rectangle.figma {
-  background: var(--icon-figma-bg);
+  background: var(--iconFigmaBg);
 }
 
 .rectangle.code {
-  background:  var(--icon-code-bg);
+  background:  var(--iconCodeBg);
 }
 
 .rectangle.procreate {
-  background:  var(--icon-procreate-bg);
+  background:  var(--iconProcreateBg);
 }

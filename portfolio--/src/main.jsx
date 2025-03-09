@@ -13,10 +13,8 @@ function Main() {
   useEffect(() => {
     const root = document.documentElement;
     Object.entries(themes[theme]).forEach(([key, value]) => {
-      root.style.setProperty(`--${key}-color`, value);
+      root.style.setProperty(`--${key}`, value);
     });
-    root.style.setProperty("--primary-text-color", themes[theme].primarytext);
-    root.style.setProperty("--color-background-secondary", themes[theme].backgroundSecondary);
   }, [theme]);
 
   return (

@@ -10,7 +10,6 @@
     flex-direction: row;
     align-items: flex-start;
     gap: max(5em, 32px);
-    transition: all 1s ease;
 
   }
   
@@ -18,7 +17,6 @@
     display: flex;
     flex-direction: column;
     width: max(60%, calc(100% - 20em));
-    transition: all 1s ease;
   }
   
   @media (max-width: 1000px) {

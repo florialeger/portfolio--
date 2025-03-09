@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import { motion } from "framer-motion";
 import useThemeMotion from "./../animations/useThemeMotion";
 import { themes } from "../../assets/styles/theme";
 import wheel from "../../assets/svg/wheel.svg";
@@ -9,7 +8,7 @@ const ThemeCircle = ({ theme, handleThemeChange }) => {
   return (
     <div
       className="theme-circle"
-      style={{ backgroundColor: themes[theme].background }}
+      style={{ backgroundColor: themes[theme].backgroundTheme }}
       onClick={(e) => {
         e.stopPropagation();
         handleThemeChange(theme);

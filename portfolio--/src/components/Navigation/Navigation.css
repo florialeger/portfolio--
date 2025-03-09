@@ -11,21 +11,21 @@
 }
 
 .blur-overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: inherit;
   height: inherit;
   pointer-events: none;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.3s ease-in-out;
 
   -webkit-mask-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 1),
+    var(--colorPrimary0),
     rgba(0, 0, 0, 0)
   );
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  mask-image: linear-gradient(to bottom,  var(--colorPrimary0) rgba(0, 0, 0, 0));
   z-index: 999;
 }
 
@@ -39,8 +39,8 @@
   align-items: center;
   z-index: 1000;
 
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
 
   transition: padding 0.5s ease;
 }
@@ -49,7 +49,6 @@
   backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
 }
-
 
 .nav-links {
   display: flex;
@@ -77,8 +76,17 @@
   flex-direction: row;
   align-items: center;
   font-size: var(--font-size-button);
-  color: var(--primary-text-color);
+  color: var(--textDefault);
   transition: text-shadow 0.125s ease;
+}
+
+.nav-link-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
 }
 
 .nav-right .nav-link.active {
@@ -101,13 +109,12 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  background-color: var(--gray-200);
   border-radius: 1em;
   z-index: -1;
 }
 
 .arrow {
-  background-color: var(--text-default);
+  background-color: var(--textDefault);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -116,24 +123,24 @@
 }
 
 .cross-icon {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    position: relative;
-  }
-  
-  .cross-icon-bar {
-    position: absolute;
-    width: 24px;
-    height: 4px;
-    top: 40%;
-    left: 0;
-    background-color: var(--text-tertiary);
-  }
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  position: relative;
+}
 
-  .cross-icon:focus {
-    outline: none;
-  }
+.cross-icon-bar {
+  position: absolute;
+  width: 24px;
+  height: 4px;
+  top: 40%;
+  left: 0;
+  background-color: var(--textTertiary);
+}
+
+.cross-icon:focus {
+  outline: none;
+}
 
 .menu-button {
   display: flex;
@@ -152,7 +159,7 @@
   flex-direction: column;
   justify-content: space-around;
   width: 20px;
- aspect-ratio: 1;
+  aspect-ratio: 1;
   cursor: pointer;
 }
 
@@ -173,8 +180,8 @@
   display: flex;
   flex-direction: column;
   width: calc(100% - 32px);
-  background: var(--background-invert);
-  color: var(--text-tertiary);
+  background: var(--backgroundInvert);
+  color: var(--textTertiary);
   padding: 1em;
   z-index: 999;
 }
@@ -184,14 +191,14 @@
   padding: 0.3em;
   justify-content: center;
   font-size: var(--font-size-button);
-  color: var(--text-inverted);
+  color: var(--textInverted);
   transition: background-color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .menu-item.active {
-  background-color: var(--background-main);
+  background-color: var(--backgroundMain);
   text-shadow: var(--system-shadowsOutline-invert);
-}/* ne fonctionne pas*/
+} /* ne fonctionne pas*/
 
 .menu-item:focus {
   outline: none;
@@ -210,7 +217,7 @@
   }
 
   .nav-links {
-    gap:0;
+    gap: 0;
   }
 
   .nav-container {
@@ -222,9 +229,8 @@
   .nav-container {
     top: 54px;
     left: 16px;
-    background: var(--background-invert);
+    background: var(--backgroundInvert);
     padding: 0.5em 0.5em 0.5em 1em;
     width: calc(100% - 32px);
-  
   }
 }
