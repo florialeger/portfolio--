@@ -1,56 +1,69 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { Text } from "../Text/Text";
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import ProjectList from "./ProjectList";
+import Card from "../ui/Card/Card";
 import "./Project.css";
+import { BounceInView } from "../../hooks/useBounceInView";
 
-const renderTextSection = (label, value) => (
-  <>
-    <Text type="p" className="text.key-info">
-      {label}
-    </Text>
-    <Text type="p" className="text.date">
-      {value}
-    </Text>
-  </>
-);
-
-const ProjectDisplay = ({ project }) => {
-  const [imageUrl, setImageUrl] = useState("");
+const ProjectDisplay = () => {
+  const [projects, setProjects] = useState([]);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const projectCardRefs = useRef({});
 
   useEffect(() => {
-    if (project && project.imageUrl) {
-      const imagePath = `.././assets/img/${project.imageUrl}`;
-      setImageUrl(imagePath);
-    }
-  }, [project]);
+    const fetchProjects = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/projects");
+        const sortedProjects = response.data.sort(
+          (a, b) => new Date(b.created) - new Date(a.created)
+        );
+        setProjects(sortedProjects);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchProjects();
+  }, []);
 
-  if (!project) return null;
+  useEffect(() => {
+    if (selectedProject && projectCardRefs.current[selectedProject._id]) {
+      projectCardRefs.current[selectedProject._id].scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [selectedProject]);
+
+  const handleProjectClick = (project) => {
+    setSelectedProject(project);
+  };
 
   return (
-    <motion.div
-      className="project-display"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -50 }}
-      transition={{ duration: 0.5 }}
-    >
-      <Link to={`/work/${project.slug}`} className="project-display-container">
-        <div className="project-top-infos">
-          <div className="project-top-infos-left">
-            {renderTextSection("Context", project.context)}
-          </div>
-          <div className="project-top-infos-right">
-            {renderTextSection("Created", project.created)}
-            {renderTextSection("Project Duty", project.projectDuty)}
-          </div>
+    <div className="project-display-container">
+      <div className="project-list-container">
+        <ProjectList
+          projects={projects}
+          selectedProject={selectedProject}
+          onProjectClick={handleProjectClick}
+        />
+      </div>
+
+      <div className="vertical-project-display-container">
+        <div className="project-cards-container">
+          {projects.map((project) => (
+            <div
+              key={project._id}
+              className="project-card"
+              ref={(el) => (projectCardRefs.current[project._id] = el)}
+            >
+              <BounceInView>
+                <Card project={project} />
+              </BounceInView>
+            </div>
+          ))}
         </div>
-          {imageUrl && <img src={imageUrl} alt={project.title} />}
-        <div className="project-bottom-infos">
-          {renderTextSection("Support", project.support)}
-        </div>
-      </Link>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 

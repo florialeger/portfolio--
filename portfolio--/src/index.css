@@ -1,25 +1,15 @@
 @font-face {
-  font-family: "Monda";
+  font-family: 'Roboto Mono';
+  src: url('./assets/fonts/RobotoMono-Regular.ttf') format('truetype');
+  font-weight: normal;
   font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/monda/v17/TK3tWkYFABsmjsphPho.woff2)
-    format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
-    U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-  font-family: "Monda";
+  font-family: 'Roboto Mono';
+  src: url('./assets/fonts/RobotoMono-Bold.ttf') format('truetype');
+  font-weight: bold;
   font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/monda/v17/TK3tWkYFABsmjsphPho.woff2)
-    format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
-    U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 :root {
@@ -29,7 +19,7 @@
     system-ui, Avenir, Helvetica, Arial, sans-serif, "Monda";
   --font-family-body: -apple-system-body, -apple-system, Inter, system-ui,
     Avenir, Helvetica, Arial, sans-serif, "Monda";
-  --font-family-date: "Monda", -apple-system, Inter, system-ui, Avenir,
+  --font-family-secondary: 'Roboto Mono', monospace, -apple-system, Inter, system-ui, Avenir,
     Helvetica, Arial, sans-serif;
 
   --line-height-default: 1.5;
@@ -105,6 +95,10 @@
   --gray-900: rgba(51, 51, 51, 1);
   --gray-1000: rgba(26, 26, 26, 1); 
 
+  --shadows--mini: 0px 0px 0px rgba(0, 0, 0, 0.06),
+    0px 1px 1px -1px rgba(0, 0, 0, 0.06), 0px 3px 3px -1px rgba(0, 0, 0, 0.06)
+   ;
+
   --shadows--normal: 0px 0px 0px rgba(0, 0, 0, 0.06),
     0px 1px 1px -1px rgba(0, 0, 0, 0.06), 0px 3px 3px -1px rgba(0, 0, 0, 0.06),
     0px 6px 6px -3px rgba(0, 0, 0, 0.06), 0px 12px 12px -6px rgba(0, 0, 0, 0.05),
@@ -137,6 +131,12 @@
     inset 0 1px 1px 0 rgba(255, 255, 255, 0.15),
     inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.15),
     inset 0 2px 3px 0 rgba(255, 255, 255, 0.15);
+
+
+  --ease-linear: cubic-bezier(0.25,0.25,0.75,0.75);
+  --ease-in-sine: cubic-bezier(0.47,0,0.745,0.715);
+  --ease-out-sine: cubic-bezier(0.39,0.575,0.565,1);
+  --ease-out-elastic: linear(0,0.5737 7.6%,0.8382 11.87%,0.9463 14.19%,1.0292 16.54%,1.0886 18.97%,1.1258 21.53%,1.137 22.97%,1.1424 24.48%,1.1423 26.1%,1.1366 27.86%,1.1165 31.01%,1.0507 38.62%,1.0219 42.57%,0.9995 46.99%,0.9872 51.63%,0.9842 58.77%,1.0011 81.26%,1);
 
   
   font-size: 16px;
@@ -215,7 +215,7 @@ ol {
   :root {
     --font-size-headline: 1.875em;
     --font-size-subheadline: 1.125em;
-    --font-size-button: 1.125em;
+    --font-size-button: 1.25em;
     --font-size-primary: 1.0625em;
     --font-size-secondary: 0.875em;
     --font-size-tertiary: 0.875em;
@@ -232,3 +232,4 @@ ol {
     --font-size-tertiary: 0.875em;
   }
 }
+

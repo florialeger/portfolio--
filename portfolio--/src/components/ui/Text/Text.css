@@ -1,0 +1,50 @@
+.text {
+  font-family: var(--font-family-body);
+  color: var(---textDefault);
+  line-height: var(--line-height-default);
+  font-size: var(--font-size-primary);
+}
+
+.text.h1 {
+  font-family: var(--font-family-headline);
+  font-size: var(--font-size-headline);
+  font-weight: var(--font-weight-bold);
+}
+
+.text.h2 {
+  font-family: var(--font-family-subheadline);
+  font-size: var(--font-size-subheadline);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text.button {
+  font-family: var(--font-family-subheadline);
+  font-size: var(--font-size-subheadline);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.text.secondary {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-secondary);
+  color: var(--textSecondary);
+  font-weight: normal;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  width: calc(max(3.5px, 0.1em));
+  height: var(--font-size-primary);
+  background-color: currentColor;
+  color: var(---textDefault);
+}
+
+.cursor.blinking {
+  animation: blink 0.7s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

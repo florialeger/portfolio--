@@ -1,0 +1,29 @@
+.global-cross-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50px;
+  aspect-ratio: 1;
+  cursor: pointer;
+  background: var(--backgroundNavReduced);
+  align-items: center;
+  border-radius: 50px;
+  position: fixed;
+  top : 3em;
+  right: 3em;
+  padding: 1em 1em;
+}
+
+.global-cross-icon-bar {
+  background: var(--textDefault);
+  width: 30px;
+  height: 5px;
+  border-radius: 24px;
+  transition: transform 0.1s ease, opacity 0.1s ease;
+}
+
+.global-cross-icon-bar:focus {
+  outline: none;
+}
+
+

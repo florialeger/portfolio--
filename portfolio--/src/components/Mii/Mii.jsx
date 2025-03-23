@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import VanillaTilt from "vanilla-tilt";
-import { tiltOptions } from "./../animations/tiltOptions";
+import { tiltOptions } from "../../hooks/tiltOptions";
 import { useEyeMovement } from "./../../hooks/useEyeMovement";
 import miiSkin from "../../assets/svg/mii.svg";
 import miiLeftEye from "../../assets/svg/mii-left-eye.svg";
@@ -22,30 +22,38 @@ function Tilt({ options, children }) {
     };
   }, [options]);
 
-  return <div className="tilt-container" ref={tiltRef}>{children}</div>;
+  return (
+    <div className="tilt-container" ref={tiltRef}>
+      {children}
+    </div>
+  );
 }
 
-export default function Mii() {
-  const { leftEyePosition, rightEyePosition, miiContainerRef } = useEyeMovement();
+export default function Mii({ position }) {
+  const { leftEyePosition, rightEyePosition, miiContainerRef } =
+    useEyeMovement();
 
   return (
-    <Tilt options={tiltOptions}>
+    <Tilt options={tiltOptions} style={{ position: { position } }}>
       <div className="mii-container" ref={miiContainerRef}>
         <img src={miiSkin} alt="Mii Skin" className="mii-skin" />
         <img
           src={miiLeftEye}
           alt="Mii Left Eye"
           className="mii-left-eye"
-          style={{ transform: `translate(${leftEyePosition.x}px, ${leftEyePosition.y}px)` }}
+          style={{
+            transform: `translate(${leftEyePosition.x}px, ${leftEyePosition.y}px)`,
+          }}
         />
         <img
           src={miiRightEye}
           alt="Mii Right Eye"
           className="mii-right-eye"
-          style={{ transform: `translate(${rightEyePosition.x}px, ${rightEyePosition.y}px)` }}
+          style={{
+            transform: `translate(${rightEyePosition.x}px, ${rightEyePosition.y}px)`,
+          }}
         />
       </div>
     </Tilt>
   );
 }
-

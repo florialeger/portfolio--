@@ -1,91 +1,162 @@
-.project-display {
-  width: 80%;
-  padding: 1em;
-  background-color: var(--backgroundMain);
-}
-
-.project-display-container {
+.project-detail-content {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  background: var(--backgroundDetailled);
+  height: 95vh;
+  width: 95vw;
+  padding: 4em;
+  border-radius: 2em;
+  position: fixed;
+  top: 2.5vh;
+  left: 2.5vw;
+  margin: auto;
+  overflow-y: auto;
+  z-index: 1001;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
 }
 
-.project-display-container:focus,
-.project-display-container:active {
-  outline: none; /* Ajouté pour supprimer l'outline */
+.project-detail-content::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
 }
 
-.project-top-infos {
+.project-detail-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-inline: auto;
+  margin-bottom: max(3em, 8%);
+  gap: 4em;
+}
+
+.project-detail-header-key {
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-
+  min-width: fit-content;
+  width: 100%;
 }
-.project-top-infos-right {
+.project-detail-header-main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 50%;
+  min-width: calc(392px - 48px);
 }
 
-.project-bottom-infos {
+.project-detail-images {
   display: flex;
   flex-direction: column;
-}
-
-
-.project-display img {
-  width: 100%;
-  aspect-ratio: 1.7;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 1.5em;
-  background: var(--backgroundPhoto);
-  box-shadow: var(--shadows--normal);
-  height: auto;
-}
-.project-detail img {
-  width: 100%;
-  aspect-ratio: 1.7;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 1.5em;
-  background: var(--backgroundPhoto);
-  box-shadow: var(--shadows--normal);
+  align-items: center;
   height: auto;
 }
 
 .secondary-images-grid {
+  width: 60%;
+  min-width: 366px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1em;
 }
 
-.secondary-images-grid img {
+.secondary-images-grid .secondary-media {
   width: 100%;
   height: auto;
   object-fit: cover;
+  border-radius: 1.5em;
 }
 
-.secondary-images-grid img:nth-child(1) {
+.secondary-images-grid .full-width {
   grid-column: span 2;
-  grid-row: span 1;
 }
 
-.secondary-images-grid img:nth-child(2) {
-  grid-column: span 1;
-  grid-row: span 2;
+.project-detail-footer {
+  margin-top: max(3em, 8%);
+  text-align: center;
 }
 
-.secondary-images-grid img:nth-child(3) {
-  grid-column: span 1;
-  grid-row: span 1;
+@media (max-width: 770px) {
+  .project-detail-content {
+    padding-inline: 2em;
+  }
+
+  .project-list-container {
+    display: none;
+  }
 }
 
-.navigation-buttons {
+.project-display-container {
+    display: flex;
+    flex-direction: row;
+    min-width: calc(402px - 32px);
+    padding-inline: 3em;
+    height: calc(100vh - 8em); 
+}
+
+.project-list-container {
+  padding-top: 4em;
+  min-width: 16em;
+  position: sticky;
+  top: 2em;
+}
+
+.year-header {
+  cursor: pointer;
+  padding: 0.5em;
+  padding-inline: 1em;
+  border-radius: 1.25em;
+  transition: background-color 0.3s ease;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  margin-top: 1em;
 }
 
-.navigation-buttons a {
-  text-decoration: none;
-  color: var(--textLinkReadMore);
+.year-header.active {
+  background-color: #fff;
+  box-shadow: var(--shadows--mini);
+}
+
+.project-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-items li {
+  padding: 0.5em;
+  border-radius: 1em;
+  cursor: pointer;
+}
+
+.vertical-project-display-container {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  overflow: auto; 
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.vertical-project-display-container::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.project-cards-container {
+  padding-top: 4em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 10em;
+}
+
+.project-card {
+  width: 80%;
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: center;
 }

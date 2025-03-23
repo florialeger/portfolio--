@@ -1,17 +1,20 @@
-import React, { useRef } from "react";
-import { Text, MotionText } from "../components/Text/Text";
+import React, { useState, useEffect } from "react";
+import { Text, MotionText } from "../components/ui/Text/Text";
 import { FadeIn } from "../hooks/FadeIn";
-import { useMousePosition } from "../hooks/useMousePosition";
-import { FigmaLogo, CodeLogo, ProcreateLogo } from "./../components/Logo/Logo";
-
-import "./Home.css";
+import Card from "../components/ui/Card/Card";
+import axios from "axios";
+import { LayoutGroup } from "framer-motion";
+import "./Pages.css";
 
 function Home() {
-  const procreateRef = useRef(null);
-  const figmaRef = useRef(null);
-  const codeRef = useRef(null);
-  const containerRefs = [procreateRef, figmaRef, codeRef];
-  const positions = useMousePosition(containerRefs);
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/projects")
+      .then((response) => setProjects(response.data.slice(0, 3))) // Display first 3 projects
+      .catch((error) => console.error(error));
+  }, []);
 
   return (
     <div
@@ -22,7 +25,7 @@ function Home() {
         alignItems: "start",
         maxWidth: "1100px",
         width: "80%",
-        height : "100%",
+        height: "100%",
         margin: "0 auto",
         paddingTop: "max(10vw, 24px)",
       }}
@@ -43,18 +46,22 @@ function Home() {
           psychology, technology and design.`,
           ]}
         />
-        <div style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent : "center",
-        gap: "24px",
-        width: "60%",
-        margin: "24px auto",
-      }}>
-          <FigmaLogo />
-          <CodeLogo />
-          <ProcreateLogo />
-        </div>
+        <LayoutGroup>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              gap: "24px",
+              width: "60%",
+              margin: "24px auto",
+            }}
+          >
+            {projects.map((project) => (
+              <Card key={project._id} project={project} />
+            ))}
+          </div>
+        </LayoutGroup>
       </FadeIn>
     </div>
   );

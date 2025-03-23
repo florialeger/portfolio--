@@ -1,11 +1,17 @@
 export const themes = {
   white: {
-    backgroundMain: "linear-gradient(to bottom, var(--colorPrimary0), rgba(248, 248, 248, 1))",
+    backgroundMain:
+      "linear-gradient(to bottom, var(--colorPrimary0), rgba(248, 248, 248, 1))",
     backgroundTheme: "rgba(252, 252, 252, 1)",
-    backgroundInvert: "linear-gradient(to bottom, var(--gray-900), rgba(54, 54, 54, 1))",
-    backgroundPlayground: "linear-gradient(to bottom, var(--colorAccent), var(--colorPrimary1))",
-    backgroundPhoto: "rgba(255, 255, 255, 1)",
+    backgroundInvert:
+      "linear-gradient(to bottom, var(--gray-900), rgba(54, 54, 54, 1))",
+    backgroundDetailled: "var(--gray-100)",
     backgroundNavLinks: "rgba(175, 175, 175, 0.2)",
+    backgroundNavReduced: "rgba(221, 221, 221, 0.95)",
+
+    gradientTop: "rgba(255, 255, 255, 0)",
+    gradientMiddle: "rgba(255, 255, 255, 0.9)",
+    gradientBottom: "rgba(255, 255, 255, 1)",
 
     colorPrimary0: "rgba(252, 252, 252, 1)",
     colorPrimary1: "rgba(243, 188, 80, 1)",
@@ -22,13 +28,16 @@ export const themes = {
     textLinkExternal: "rgba(53, 41, 181, 1)",
     textSecondary: "rgba(113, 113, 113, 1)",
     textTertiary: "rgb(188, 188, 188)",
-    buttonNavbarReduced: "linear-gradient(to bottom, var(--colorPrimary2), var(--colorPrimary4))",
+    buttonNavbarReduced:
+      "linear-gradient(to bottom, var(--colorPrimary1), var(--colorPrimary2)",
     buttonProjectBg: "var(--colorPrimary4)",
     buttonProjectBorder: "rgba(237, 129, 78, 1)",
     buttonBackBg: "var(--colorSecondary)",
     buttonBackBorder: "rgba(114, 140, 175, 1)",
-    buttonResumeBg: "linear-gradient(to bottom, rgba(51, 51, 51, 1), rgba(46, 46, 46, 1))",
-    buttonResumeBorder: "linear-gradient(to bottom, rgba(45, 45, 45, 1), rgba(33, 33, 33, 1))",
+    buttonResumeBg:
+      "linear-gradient(to bottom, rgba(51, 51, 51, 1), rgba(46, 46, 46, 1))",
+    buttonResumeBorder:
+      "linear-gradient(to bottom, rgba(45, 45, 45, 1), rgba(33, 33, 33, 1))",
     carouselInactive: "rgba(241, 241, 241, 1)",
     carouselActive: "var(--colorPrimary4)",
     iconProcreateBg: "linear-gradient(to bottom, #f5f5f5, #e0e0e0)",
@@ -36,12 +45,19 @@ export const themes = {
     iconFigmaBg: "linear-gradient(to bottom, #1e1e1e, #1a1a1a)",
   },
   black: {
-    backgroundMain: "linear-gradient(to bottom, var(--colorPrimary0), rgba(54, 54, 54, 1))",
+    backgroundMain:
+      "linear-gradient(to bottom, var(--colorPrimary0), rgba(54, 54, 54, 1))",
     backgroundTheme: "var(--gray-900)",
-    backgroundInvert: "linear-gradient(to bottom, var(--colorPrimary0), rgba(248, 248, 248, 1))",
-    backgroundPlayground: "linear-gradient(to bottom, var(--colorAccent), var(--colorPrimary1))",
-    backgroundPhoto: "rgba(255, 255, 255, 1)",
+    backgroundInvert:
+      "linear-gradient(to bottom, var(--colorPrimary0), rgba(248, 248, 248, 1))",
+    backgroundDetailled:
+      "linear-gradient(to bottom, var(--colorAccent), var(--colorPrimary1))",
     backgroundNavLinks: "rgb(255, 255, 255,0.1)",
+    backgroundNavReduced: "rgba(175, 175, 175, 0.9)",
+
+    gradientTop: "rgba(49, 49, 49, 0)",
+    gradientMiddle: "rgba(49, 49, 49, 0.9)",
+    gradientBottom: "rgba(49, 49, 49, 1)",
 
     colorPrimary0: "var(--gray-900)",
     colorPrimary1: "rgba(243, 188, 80, 1)",
@@ -59,13 +75,16 @@ export const themes = {
     textLinkExternal: "rgba(53, 41, 181, 1)",
     textSecondary: "rgba(113, 113, 113, 1)",
     textTertiary: "rgb(188, 188, 188)",
-    buttonNavbarReduced: "linear-gradient(to bottom, var(--colorPrimary2), var(--colorPrimary4))",
+    buttonNavbarReduced:
+      "linear-gradient(to bottom, var(--colorPrimary2), var(--colorPrimary4))",
     buttonProjectBg: "var(--colorPrimary4)",
     buttonProjectBorder: "rgba(237, 129, 78, 1)",
     buttonBackBg: "var(--colorSecondary)",
     buttonBackBorder: "rgba(114, 140, 175, 1)",
-    buttonResumeBg: "linear-gradient(to bottom, rgba(51, 51, 51, 1), rgba(46, 46, 46, 1))",
-    buttonResumeBorder: "linear-gradient(to bottom, rgba(45, 45, 45, 1), rgba(33, 33, 33, 1))",
+    buttonResumeBg:
+      "linear-gradient(to bottom, rgba(51, 51, 51, 1), rgba(46, 46, 46, 1))",
+    buttonResumeBorder:
+      "linear-gradient(to bottom, rgba(45, 45, 45, 1), rgba(33, 33, 33, 1))",
     carouselInactive: "rgba(241, 241, 241, 1)",
     carouselActive: "var(--colorPrimary4)",
     iconProcreateBg: "linear-gradient(to bottom, #f5f5f5, #e0e0e0)",
@@ -73,12 +92,20 @@ export const themes = {
     iconFigmaBg: "linear-gradient(to bottom, #1e1e1e, #1a1a1a)",
   },
   green: {
-    backgroundMain: "linear-gradient(to bottom, rgb(204, 243, 136), rgb(193, 234, 124))",
+    backgroundMain:
+      "linear-gradient(to bottom, rgb(204, 243, 136), rgb(193, 234, 124))",
     backgroundTheme: "rgb(204, 243, 136)",
-    backgroundInvert: "linear-gradient(to bottom, var(--gray-900), rgba(54, 54, 54, 1))",
-    backgroundPlayground: "linear-gradient(to bottom, var(--colorAccent), var(--colorPrimary1))",
+    backgroundInvert:
+      "linear-gradient(to bottom, var(--gray-900), rgba(54, 54, 54, 1))",
+    backgroundDetailled: "var(--colorPrimary0)",
     backgroundPhoto: "rgba(255, 255, 255, 1)",
     backgroundNavLinks: "rgb(255, 255, 255,0.4)",
+    backgroundNavReduced: "rgba(37, 71, 1, 0.9)",
+
+    gradientTop: "rgba(243, 229, 136, 0)",
+    gradientMiddle: "rgba(204, 243, 136, 0.9)",
+    gradientBottom: "rgb(193, 243, 136)",
+
     colorPrimary0: "rgba(252, 252, 252, 1)",
     colorPrimary1: "rgba(243, 188, 80, 1)",
     colorPrimary2: "rgba(252, 191, 73, 1)",
@@ -93,14 +120,17 @@ export const themes = {
     textLinkReadMore: "rgba(6, 167, 226, 1)",
     textLinkExternal: "rgba(53, 41, 181, 1)",
     textSecondary: "rgba(113, 113, 113, 1)",
-    textTertiary: "rgb(188, 188, 188)",
-    buttonNavbarReduced: "linear-gradient(to bottom, var(--colorPrimary2), var(--colorPrimary4))",
+    textTertiary: "rgb(235, 255, 202)",
+    buttonNavbarReduced:
+      "linear-gradient(to bottom, var(--colorPrimary2), var(--colorPrimary4))",
     buttonProjectBg: "var(--colorPrimary4)",
     buttonProjectBorder: "rgba(237, 129, 78, 1)",
     buttonBackBg: "var(--colorSecondary)",
     buttonBackBorder: "rgba(114, 140, 175, 1)",
-    buttonResumeBg: "linear-gradient(to bottom, rgba(51, 51, 51, 1), rgba(46, 46, 46, 1))",
-    buttonResumeBorder: "linear-gradient(to bottom, rgba(45, 45, 45, 1), rgba(33, 33, 33, 1))",
+    buttonResumeBg:
+      "linear-gradient(to bottom, rgba(51, 51, 51, 1), rgba(46, 46, 46, 1))",
+    buttonResumeBorder:
+      "linear-gradient(to bottom, rgba(45, 45, 45, 1), rgba(33, 33, 33, 1))",
     carouselInactive: "rgba(241, 241, 241, 1)",
     carouselActive: "var(--colorPrimary4)",
     iconProcreateBg: "linear-gradient(to bottom, #f5f5f5, #e0e0e0)",
@@ -108,12 +138,20 @@ export const themes = {
     iconFigmaBg: "linear-gradient(to bottom, #1e1e1e, #1a1a1a)",
   },
   yellow: {
-    backgroundMain: "linear-gradient(to bottom, rgb(243, 229, 136), rgb(249, 215, 123))",
+    backgroundMain:
+      "linear-gradient(to bottom, rgb(243, 229, 136), rgb(249, 215, 123))",
     backgroundTheme: "rgb(243, 238, 136)",
-    backgroundInvert: "linear-gradient(to bottom, var(--gray-900), rgba(54, 54, 54, 1))",
-    backgroundPlayground: "linear-gradient(to bottom, var(--colorAccent), var(--colorPrimary1))",
+    backgroundInvert:
+      "linear-gradient(to bottom, var(--gray-900), rgba(54, 54, 54, 1))",
+    backgroundDetailled: "var(--colorPrimary0)",
     backgroundPhoto: "rgba(255, 255, 255, 1)",
     backgroundNavLinks: "rgb(255, 255, 255,0.4)",
+    backgroundNavReduced: "rgba(175, 175, 175, 0.9)",
+
+    gradientTop: "rgba(243, 229, 136, 0)",
+    gradientMiddle: "rgba(243, 229, 136, 0.9)",
+    gradientBottom: "rgba(243, 229, 136, 1)",
+
     colorPrimary0: "rgba(252, 252, 252, 1)",
     colorPrimary1: "rgba(243, 188, 80, 1)",
     colorPrimary2: "rgba(252, 191, 73, 1)",
@@ -129,13 +167,16 @@ export const themes = {
     textLinkExternal: "rgba(53, 41, 181, 1)",
     textSecondary: "rgba(113, 113, 113, 1)",
     textTertiary: "rgb(188, 188, 188)",
-    buttonNavbarReduced: "linear-gradient(to bottom, var(--colorPrimary2), var(--colorPrimary4))",
+    buttonNavbarReduced:
+      "linear-gradient(to bottom, var(--colorPrimary2), var(--colorPrimary4))",
     buttonProjectBg: "var(--colorPrimary4)",
     buttonProjectBorder: "rgba(237, 129, 78, 1)",
     buttonBackBg: "var(--colorSecondary)",
     buttonBackBorder: "rgba(114, 140, 175, 1)",
-    buttonResumeBg: "linear-gradient(to bottom, rgba(51, 51, 51, 1), rgba(46, 46, 46, 1))",
-    buttonResumeBorder: "linear-gradient(to bottom, rgba(45, 45, 45, 1), rgba(33, 33, 33, 1))",
+    buttonResumeBg:
+      "linear-gradient(to bottom, rgba(51, 51, 51, 1), rgba(46, 46, 46, 1))",
+    buttonResumeBorder:
+      "linear-gradient(to bottom, rgba(45, 45, 45, 1), rgba(33, 33, 33, 1))",
     carouselInactive: "rgba(241, 241, 241, 1)",
     carouselActive: "var(--colorPrimary4)",
     iconProcreateBg: "linear-gradient(to bottom, #f5f5f5, #e0e0e0)",

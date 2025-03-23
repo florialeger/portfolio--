@@ -1,14 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://unpkg.com/react-scan/dist/auto.global.js"></script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/cat.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Floria Leger</title>
+    <link rel="stylesheet" href="/src/index.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root" ></div>
     <script type="module" src="/src/main.jsx"></script>
+
     <svg width="0" height="0">
       <filter id="goo">
         <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
@@ -33,5 +36,6 @@
         <feComposite in="SourceGraphic" in2="goo" operator="atop" />
       </filter>
     </svg>
+    </div>
   </body>
 </html>

@@ -1,33 +1,41 @@
 .tilt-container {
-    width: 18em;
-    min-width: 14em;
-    aspect-ratio: 13/16;
-    margin: 0; 
-    background: linear-gradient(to bottom, #ffffff, #fdfdfd);
-    box-shadow: var(--shadows--normal);
-    border-radius: 8px;
-  }
-  
-  .mii-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: flex-start; 
-  }
-  
-  .mii-skin,
-  .mii-left-eye,
-  .mii-right-eye {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .mii-left-eye,
-  .mii-right-eye {
-    pointer-events: none; /* Prevent mouse events from affecting the eyes */
-    transition: transform 0.3s ease-out; /* Add a transition to smooth the movements */
-  }
+  position: fixed;
+  top: -5em;
+  right: -20em;
+  width: 15em;
+  min-width: 10em;
+  aspect-ratio: 13/16;
+  margin: 0;
+  background: linear-gradient(to bottom, #ffffff, #fdfdfd);
+  box-shadow: var(--shadows--mini);
+  border-radius: 8px;
+  transition: all 0.8s ease;
+}
+
+.tilt-container:hover {
+  box-shadow: var(--shadows--normal);
+}
+
+.mii-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.mii-skin,
+.mii-left-eye,
+.mii-right-eye {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mii-left-eye,
+.mii-right-eye {
+  pointer-events: none; /* Prevent mouse events from affecting the eyes */
+  transition: transform 0.3s ease-out; /* Add a transition to smooth the movements */
+}

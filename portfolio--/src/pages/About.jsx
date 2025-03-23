@@ -1,8 +1,8 @@
 import React from "react";
 import Mii from "../components/Mii/Mii";
-import { Text } from "../components/Text/Text";
+import { Text } from "../components/ui/Text/Text";
 import { FadeIn } from "../hooks/FadeIn";
-import "./About.css";
+import "./Pages.css";
 
 function About() {
   return (
@@ -49,8 +49,8 @@ me about managing deadlines and handling feedback.`,
               ]}
               style={{ marginBottom: "1.2em" }}
             />
+            <Mii />
           </div>
-          <Mii />
         </div>
       </FadeIn>
     </div>

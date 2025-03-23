@@ -1,0 +1,120 @@
+.svg-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: max(40%, 366px);
+  margin: 2em auto;
+}
+
+.svg-wrapper {
+  position: relative;
+  width: 80px;
+  height: 82px;
+}
+
+.magnetic-svg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.magnetic-svg:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+}
+
+
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: calc(393px - 48px);
+  margin: 2em 24em;
+  transition: all 0.8s ease;
+}
+
+.about-content-container {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: max(5em, 32px);
+}
+
+.about-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .about-container {
+    margin: 1em 20em;
+  }
+
+  .tilt-container {
+    right: -16em !important;
+    width: 12em !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  .about-content-container {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .about-container {
+    margin: 1em 13em;
+  }
+  .tilt-container {
+    position: inherit !important;
+    margin: 2em auto !important;
+    width: 13em !important;
+  }
+  @media (max-width: 800px) {
+    .about-container {
+      margin: 1em 8em;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .about-container {
+      margin: 1em 5em;
+    }
+  }
+  @media (max-width: 500px) {
+    .about-container {
+      margin: 1em 3em;
+    }
+  }
+}
+
+
+.playground-content-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4em;
+  width: 80%;
+  margin-inline: auto;
+}
+
+@media (max-width: 1100px) {
+  .playground-content-container {
+    gap: 2em;
+  }
+}
+@media (max-width: 770px) {
+  .playground-content-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .playground-content-container {
+    grid-template-columns: 1fr;
+  }
+}
