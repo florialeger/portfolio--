@@ -17,8 +17,10 @@ const HomePresentation = () => {
       </FadeIn>
       <FadeIn duration={0.8} delay={0.2}>
         <Text type="p" className="text">
-          I'm a second-year student at the École Nationale Supérieure de
-          Cognitique (ENSC)...
+          I'm Floria, a second-year student at the École Nationale Supérieure de
+          Cognitique (ENSC), where I explore mental processes and human
+          interactions, a fascinating field that combines psychology, technology
+          and design.
         </Text>
       </FadeIn>
     </div>
