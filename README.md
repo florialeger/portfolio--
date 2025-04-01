@@ -15,7 +15,8 @@ Ensure you have the following installed on your system:
     Clone the project repository to your local machine:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/florialeger/portfolio.git
+
    npm install
    npm install react-router-dom
    npm install framer-motion
@@ -28,8 +29,12 @@ Ensure you have the following installed on your system:
    npm install vite-plugin-static-copy --save-dev
    npm install slugify
    npm i react-scan
-   cd portfolio--
 
-    npm run dev
+   cd portfolio--
+ 
+   # For running the front-end only
+   npm run dev
+   
+   # For running both front-end and back-end
    npm run start
    ```
