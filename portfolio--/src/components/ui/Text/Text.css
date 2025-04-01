@@ -34,7 +34,7 @@
   display: inline-block;
   margin-left: 2px;
   width: calc(max(3.5px, 0.1em));
-  height: var(--font-size-primary);
+  height: var(--font-size-secondary);
   background-color: currentColor;
   color: var(---textDefault);
 }

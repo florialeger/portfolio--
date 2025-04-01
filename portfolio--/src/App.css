@@ -1,10 +1,19 @@
 .App {
   display: flex;
   flex-direction: column;
-  padding-top: 6em;
   width: 100vw;
-  min-height: calc(100vh - 6em);
+  min-height: 100vh;
   background: var(--backgroundMain);
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: var(--textDefault);
 }

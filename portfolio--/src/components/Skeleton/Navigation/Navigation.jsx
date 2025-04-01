@@ -10,6 +10,8 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { debounce } from "lodash";
 import { Text } from "../../ui/Text/Text";
+import LineIcon from "../../ui/Icon/LineIcon";
+import { PlaygroundIcon, WorkIcon, AboutIcon, NameIcon } from "../../ui/Icon/NavIcons";
 import "./Navigation.css";
 
 const navItems = [
@@ -19,13 +21,16 @@ const navItems = [
   { name: "About", path: "/about" },
 ];
 
-const BlurOverlay = memo(({ isReduced }) => (
-  <div className={`blur-overlay ${isReduced ? "reduced" : ""}`}>
-    <div className="blur-mask">
-      <div className="blur-effect" />
-    </div>
+const BlurOverlay = ({ isReduced }) => (
+  <div className={`gradient-blur ${isReduced ? "reduced" : ""}`}>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
-));
+);
 
 const BackgroundSlider = memo(({ activeIndex, linkRefs, hoveredIndex }) => {
   const activeLinkRef =
@@ -35,11 +40,16 @@ const BackgroundSlider = memo(({ activeIndex, linkRefs, hoveredIndex }) => {
       className="background-slider"
       initial={{ x: 0, width: 0 }}
       animate={{
+        opacity: activeLinkRef ? 1 : 0,
         x: activeLinkRef ? activeLinkRef.offsetLeft : 0,
         width: activeLinkRef ? activeLinkRef.offsetWidth : 0,
       }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      style={{ background: "var(--backgroundNavLinks)" }}
+      style={{
+        background: "var(--backgroundNavLinks)",
+        border: "1.5px solid var(--backgroundNavReduced)",
+        boxShadow: " var(--shadows--mini) ",
+      }}
     />
   );
 });
@@ -48,15 +58,29 @@ const Arrow = memo(({ path, hovered }) => (
   <motion.div
     className="arrow"
     animate={{
-      rotate: hovered === path ? -225 : 0,
-      height: hovered === path ? 3.2 : 2.2,
+      rotate: hovered === path ? -225 : 0, // Rotate the arrow on hover
+      height: hovered === path ? 3.2 : 2.2, // Adjust height on hover
     }}
-    transition={{ duration: 0.5, ease: "anticipate" }}
-  />
+    transition={{
+      duration: 0.3, // Reduce duration for faster animation
+      ease: "easeInOut", // Use a smoother easing function
+    }}
+  >
+    <LineIcon width={24} hovered={hovered === path} />
+  </motion.div>
 ));
 
+/*
 const NavLink = memo(
-  ({ path, isActive, hovered, setHovered, refProp, index, setHoveredIndex }) => (
+  ({
+    path,
+    isActive,
+    hovered,
+    setHovered,
+    refProp,
+    index,
+    setHoveredIndex,
+  }) => (
     <li
       className={`nav-link ${isActive(path) ? "active" : ""}`}
       onMouseEnter={() => {
@@ -75,13 +99,54 @@ const NavLink = memo(
       </Link>
     </li>
   )
+);*/
+
+const NavLink = memo(
+  ({
+    path,
+    isActive,
+    hovered,
+    setHovered,
+    refProp,
+    index,
+    setHoveredIndex,
+  }) => {
+    const icons = {
+      "/playground": PlaygroundIcon,
+      "/work": WorkIcon,
+      "/about": AboutIcon,
+    };
+
+    const IconComponent = icons[path];
+
+    return (
+      <li
+        className={`nav-link ${isActive(path) ? "active" : ""}`}
+        onMouseEnter={() => {
+          setHovered(path);
+          setHoveredIndex(index);
+        }}
+        onMouseLeave={() => {
+          setHovered(null);
+          setHoveredIndex(null);
+        }}
+        ref={refProp}
+      >
+        <Link to={path} className="nav-link-content">
+          <IconComponent hovered={hovered === path} />
+          <Arrow path={path} hovered={hovered} />
+
+        </Link>
+      </li>
+    );
+  }
 );
 
 const NavHome = memo(({ isActive, closeNav }) => (
   <ul className="nav-links nav-left">
     <li className={`nav-link ${isActive("/") ? "active" : ""}`}>
       <Link to="/" onClick={closeNav} className="home">
-        Floria Leger
+      <NameIcon />
       </Link>
     </li>
   </ul>
@@ -138,6 +203,7 @@ const MenuButton = memo(({ toggleNav, isNavOpen }) => (
   <div
     className={`menu-button ${isNavOpen ? "open" : "closed"}`}
     onClick={toggleNav}
+    style={{   backdropFilter: "blur(24px)"}}
   >
     {!isNavOpen && (
       <motion.div
@@ -168,7 +234,9 @@ const MenuDropDown = ({ toggleNav, currentPage }) => (
         >
           <Text
             type="span"
-            className={`text button ${currentPage === item.path ? "active" : ""}`}
+            className={`text button ${
+              currentPage === item.path ? "active" : ""
+            }`}
           >
             {item.name.toUpperCase()}
           </Text>
@@ -243,20 +311,21 @@ const Navigation = () => {
     [location.pathname]
   );
   const [isNavHovered, setIsNavHovered] = useState(false);
-  const [isReduced, setIsReduced] = useState(window.innerWidth < 530);
+  const [isReduced, setIsReduced] = useState(window.innerWidth < 680);
 
   const toggleNav = useCallback(() => setIsNavOpen((prev) => !prev), []);
   const closeNav = useCallback(() => setIsNavOpen(false), []);
 
   const linkRefs = navItems.slice(1).map(() => useRef(null));
   const activeIndex = useMemo(
-    () => navItems.slice(1).findIndex((item) => item.path === location.pathname),
+    () =>
+      navItems.slice(1).findIndex((item) => item.path === location.pathname),
     [location.pathname]
   );
 
   useEffect(() => {
     const handleResize = debounce(() => {
-      setIsReduced(window.innerWidth < 530);
+      setIsReduced(window.innerWidth < 680);
     }, 300);
 
     window.addEventListener("resize", handleResize);

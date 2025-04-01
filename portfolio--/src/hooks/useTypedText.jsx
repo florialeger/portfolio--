@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const useTypedText = (strings, typeSpeed = 100, backSpeed = 25) => {
   const [text, setText] = useState("");
@@ -7,9 +7,34 @@ const useTypedText = (strings, typeSpeed = 100, backSpeed = 25) => {
   const [typingSpeed, setTypingSpeed] = useState(typeSpeed);
   const [isBlinking, setIsBlinking] = useState(false);
   const [isTypingComplete, setIsTypingComplete] = useState(false);
-  const [isCursorVisible, setIsCursorVisible] = useState(true);
+  const [isInView, setIsInView] = useState(false);
+  const elementRef = useRef(null);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      if (observer && elementRef.current) {
+        observer.unobserve(elementRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isInView) return;
+
     const handleTyping = () => {
       const i = loopNum % strings.length;
       const fullText = strings[i];
@@ -28,7 +53,6 @@ const useTypedText = (strings, typeSpeed = 100, backSpeed = 25) => {
           setIsDeleting(true);
           setIsTypingComplete(true);
           setIsBlinking(false);
-          setIsCursorVisible(false);
         }, 5000);
       } else if (isDeleting && text === "") {
         setIsBlinking(false);
@@ -44,9 +68,9 @@ const useTypedText = (strings, typeSpeed = 100, backSpeed = 25) => {
       const timer = setTimeout(handleTyping, typingSpeed);
       return () => clearTimeout(timer);
     }
-  }, [text, isDeleting, loopNum, typingSpeed, strings, typeSpeed, backSpeed, isTypingComplete]);
+  }, [text, isDeleting, loopNum, typingSpeed, strings, typeSpeed, backSpeed, isTypingComplete, isInView]);
 
-  return { text, isBlinking, isTypingComplete, isCursorVisible };
+  return { text, isBlinking, isTypingComplete, elementRef };
 };
 
 export default useTypedText;

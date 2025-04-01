@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Text, MotionText } from "../components/ui/Text/Text";
-import { FadeIn } from "../hooks/FadeIn";
-import Card from "../components/ui/Card/Card";
+import { motion } from "framer-motion";
 import axios from "axios";
-import { LayoutGroup } from "framer-motion";
+import HomeTitle from "../components/Home/HomeTitle";
+import HomePresentation from "../components/Home/HomePresentation";
+import { LoadingAnimationWithoutComplete } from "../components/Skeleton/LoadingAnimation/LoadingAnimation";
+
 import "./Pages.css";
+
+const sections = ["HomeTitle", "HomePresentation", "LoadingAnimation"];
 
 function Home() {
   const [projects, setProjects] = useState([]);
+  const [index, setIndex] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false); // Prevent rapid scrolling
 
   useEffect(() => {
     axios
@@ -16,53 +21,42 @@ function Home() {
       .catch((error) => console.error(error));
   }, []);
 
+  useEffect(() => {
+    const handleScroll = (event) => {
+      if (isScrolling) return; // Prevent handling scroll if already scrolling
+
+      if (event.deltaY > 0 && index < sections.length - 1) {
+        setIndex(index + 1);
+      } else if (event.deltaY < 0 && index > 0) {
+        setIndex(index - 1);
+      }
+
+      setIsScrolling(true); // Set scrolling state to true
+      setTimeout(() => setIsScrolling(false), 500); // Allow scrolling again after 500ms
+    };
+
+    window.addEventListener("wheel", handleScroll);
+    return () => window.removeEventListener("wheel", handleScroll);
+  }, [index, isScrolling]);
+
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "start",
-        alignItems: "start",
-        maxWidth: "1100px",
-        width: "80%",
-        height: "100%",
-        margin: "0 auto",
-        paddingTop: "max(10vw, 24px)",
-      }}
-    >
-      <FadeIn duration={0.6} delay={0}>
-        <MotionText
-          type="h1"
-          strings={["Hi, I'm Floria, a student in UX design."]}
-          style={{ marginBottom: "calc(1vw + 16px)" }}
-        />
-      </FadeIn>
-      <FadeIn duration={0.8} delay={0.1}>
-        <Text
-          type="h2"
-          children={[
-            `I'm a second-year student at the École Nationale Supérieure de Cognitique (ENSC), 
-          where I explore mental processes and human interactions, a fascinating field that combines 
-          psychology, technology and design.`,
-          ]}
-        />
-        <LayoutGroup>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              gap: "24px",
-              width: "60%",
-              margin: "24px auto",
-            }}
-          >
-            {projects.map((project) => (
-              <Card key={project._id} project={project} />
-            ))}
-          </div>
-        </LayoutGroup>
-      </FadeIn>
+    <div className="home-container">
+      <motion.div
+        initial={{ y: "0vh" }}
+        animate={{ y: `-${index * 100}vh` }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+        className="home-sections-wrapper"
+      >
+        <div className="home-section">
+          <HomeTitle />
+        </div>
+        <div className="home-section">
+          <HomePresentation />
+        </div>
+        <div className="home-section">
+          <LoadingAnimationWithoutComplete />
+        </div>
+      </motion.div>
     </div>
   );
 }

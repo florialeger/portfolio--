@@ -1,59 +1,71 @@
-import React from "react";
-import { useSpring, animated } from "@react-spring/web";
+import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { useScrollPosition } from "../../../context/ScrollPositionContext";
 import { Text } from "../Text/Text";
 import "./Card.css";
 
-const RenderTextSection = ({ value }) => (
+// Subcomponent: CardImage
+const CardImage = React.memo(({ src, alt, className }) => (
+  <img src={src} alt={alt} className={className} loading="lazy" />
+));
+
+// Subcomponent: CardImageContainer
+const CardImageContainer = React.memo(({ primaryImage, title }) => (
+  <div className="card-image-container">
+    {primaryImage?.[0] && (
+      <CardImage
+        src={`.././assets/img/${primaryImage[0]}`}
+        alt={`${title} primary`}
+        className="card-image primary"
+      />
+    )}
+    {primaryImage?.[1] && (
+      <CardImage
+        src={`.././assets/img/${primaryImage[1]}`}
+        alt={`${title} secondary`}
+        className="card-image secondary"
+      />
+    )}
+  </div>
+));
+
+// Subcomponent: RenderTextSection
+const RenderTextSection = React.memo(({ value }) => (
   <div className="card-title">
-    <Text type="p" className="text secondary">
+    <Text type="p" className="text button">
       {value}
     </Text>
   </div>
-);
+));
 
-const Card = ({ project }) => {
+// Main Card Component
+const Card = React.memo(({ project }) => {
   const navigate = useNavigate();
+  const { setScrollPosition } = useScrollPosition();
 
-  const handleOpenDetail = () => {
-    const path = project.type === 'playground' ? `/playground/${project.slug}` : `/work/${project.slug}`;
+  const handleOpenDetail = useCallback(() => {
+    const currentScrollPosition = window.scrollY;
+    setScrollPosition(currentScrollPosition);
+
+    const path =
+      project.schemaType === "playground"
+        ? `/playground/${project.slug}`
+        : `/work/${project.slug}`;
+
     navigate(path, { state: { project } });
-  };
-
-  const [props, api] = useSpring(() => ({
-    transform: "scale(1)",
-    config: { tension: 500, friction: 15 },
-  }));
+  }, [navigate, project, setScrollPosition]);
 
   return (
-    <animated.div
-      className="card-container"
-      style={props}
-      onMouseEnter={() => api.start({ transform: "scale(1.01)" })}
-      onMouseLeave={() => api.start({ transform: "scale(1)" })}
-      onClick={handleOpenDetail}
-    >
-      <div className="card">
-        <div className="card-image-container">
-          {project.primaryImage[0] && (
-            <animated.img
-              src={`.././assets/img/${project.primaryImage[0]}`}
-              alt={project.title}
-              className="card-image primary"
-            />
-          )}
-          {project.primaryImage[1] && (
-            <animated.img
-              src={`.././assets/img/${project.primaryImage[1]}`}
-              alt={`${project.title} secondary`}
-              className="card-image secondary"
-            />
-          )}
-        </div>
-        {project.type !== 'playground' && <RenderTextSection value={project.title} />}
-      </div>
-    </animated.div>
+    <div className="card-container" onClick={handleOpenDetail}>
+      <CardImageContainer
+        primaryImage={project.primaryImage}
+        title={project.title}
+      />
+      {project.schemaType !== "playground" && (
+        <RenderTextSection value={project.title} />
+      )}
+    </div>
   );
-};
+});
 
 export default Card;

@@ -4,59 +4,124 @@
   left: 0;
   width: 100vw;
   height: 100px;
+  z-index: 1000; 
+
 }
 
-.blur-overlay {
-  display: flex;
+
+.gradient-blur {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: inherit;
-  height: inherit;
-  pointer-events: none;
   z-index: 999;
-  transition: all 0.5s ease;
+  inset: 0 0 auto 0;
+  height: 20vh;
+  pointer-events: none;
 }
 
-.blur-overlay.reduced {
-  display: none;
-}
-
-.blur-mask {
+.gradient-blur > div,
+.gradient-blur::before,
+.gradient-blur::after {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: inherit;
-  background: linear-gradient(
+  inset: 0;
+}
+
+.gradient-blur::before {
+  content: "";
+  z-index: 1;
+  backdrop-filter: blur(0.5px);
+  mask: linear-gradient(
     to top,
-    var(--gradientTop) 0%,
-    var(--gradientBottom) 100%
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 12.5%,
+    rgba(0, 0, 0, 1) 25%,
+    rgba(0, 0, 0, 0) 37.5%
   );
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
 }
 
-.blur-overlay.reduced .blur-mask {
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+.gradient-blur > div:nth-of-type(1) {
+  z-index: 2;
+  backdrop-filter: blur(1px);
+  mask: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0) 12.5%,
+    rgba(0, 0, 0, 1) 25%,
+    rgba(0, 0, 0, 1) 37.5%,
+    rgba(0, 0, 0, 0) 50%
+  );
 }
 
-.blur-effect {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  opacity: 0.2;
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+.gradient-blur > div:nth-of-type(2) {
+  z-index: 3;
+  backdrop-filter: blur(2px);
+  mask: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0) 25%,
+    rgba(0, 0, 0, 1) 37.5%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 0) 62.5%
+  );
 }
 
-.blur-overlay.reduced .blur-effect {
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+.gradient-blur > div:nth-of-type(3) {
+  z-index: 4;
+  backdrop-filter: blur(4px);
+  mask: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0) 37.5%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 1) 62.5%,
+    rgba(0, 0, 0, 0) 75%
+  );
 }
+
+.gradient-blur > div:nth-of-type(4) {
+  z-index: 5;
+  backdrop-filter: blur(8px);
+  mask: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 1) 62.5%,
+    rgba(0, 0, 0, 1) 75%,
+    rgba(0, 0, 0, 0) 87.5%
+  );
+}
+
+.gradient-blur > div:nth-of-type(5) {
+  z-index: 6;
+  backdrop-filter: blur(16px);
+  mask: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0) 62.5%,
+    rgba(0, 0, 0, 1) 75%,
+    rgba(0, 0, 0, 1) 87.5%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.gradient-blur > div:nth-of-type(6) {
+  z-index: 7;
+  backdrop-filter: blur(32px);
+  mask: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0) 75%,
+    rgba(0, 0, 0, 1) 87.5%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+.gradient-blur::after {
+  content: "";
+  z-index: 8;
+  backdrop-filter: blur(64px);
+  mask: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0) 87.5%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+  .gradient-blur.reduced {
+    height: 18vh;
+  }
 
 .nav-container {
   position: fixed;
@@ -98,8 +163,7 @@
 }
 
 .nav-link {
-  padding: 0.425em 0.765em;
-  gap: 0.5em;
+  padding: 0.625em 0.965em;
   border-radius: 1em;
   outline: none;
   display: flex;
@@ -111,13 +175,13 @@
 }
 
 .nav-link:hover {
-  padding: 0.425em 0.965em;
+  padding: 0.625em 1.065em;
 }
 
 .nav-link-content {
   display: flex;
   align-items: center;
-  gap: 0.5em;
+  gap: 0.3em;
   width: 100%;
   height: 100%;
   text-decoration: none;
@@ -156,8 +220,10 @@
   bottom: 0;
   border-radius: 1em;
   z-index: -1;
-}
+  backdrop-filter: blur(16px);
 
+}
+/*
 .arrow {
   background: var(--textDefault);
   display: flex;
@@ -165,6 +231,15 @@
   align-items: center;
   width: 16px;
   height: 2.2px;
+}*/
+
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+aspect-ratio: 1;
 }
 
 .cross-icon {
@@ -281,4 +356,14 @@
   .nav-container {
     padding-inline: 0.2em;
   }
+}
+
+
+.nav-icon {
+  transition: stroke-width 0.3s ease, stroke 0.3s ease;
+  stroke: var(--textDefault);
+}
+
+.nav-icon.hovered {
+  stroke-width: 36px; 
 }

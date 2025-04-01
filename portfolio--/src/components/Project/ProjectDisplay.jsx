@@ -1,42 +1,63 @@
-import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
+import React, { useState, useEffect, useRef, useCallback, lazy } from "react";
 import ProjectList from "./ProjectList";
-import Card from "../ui/Card/Card";
 import "./Project.css";
 import { BounceInView } from "../../hooks/useBounceInView";
+import { motion } from "framer-motion";
 
-const ProjectDisplay = () => {
-  const [projects, setProjects] = useState([]);
+const Card = lazy(() => import("../ui/Card/Card"));
+
+const ProjectDisplay = ({ projects }) => {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [sortedProjects, setSortedProjects] = useState([]);
+  const [index, setIndex] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
   const projectCardRefs = useRef({});
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/projects");
-        const sortedProjects = response.data.sort(
-          (a, b) => new Date(b.created) - new Date(a.created)
-        );
-        setProjects(sortedProjects);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchProjects();
-  }, []);
-
-  useEffect(() => {
-    if (selectedProject && projectCardRefs.current[selectedProject._id]) {
-      projectCardRefs.current[selectedProject._id].scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    }
-  }, [selectedProject]);
+    // Sort projects by creation date (most recent first)
+    const sorted = [...projects].sort(
+      (a, b) => new Date(b.created) - new Date(a.created)
+    );
+    setSortedProjects(sorted);
+  }, [projects]);
 
   const handleProjectClick = (project) => {
     setSelectedProject(project);
   };
+
+  const handleScroll = useCallback(
+    (event) => {
+      if (isScrolling) return;
+
+      if (event.deltaY > 0 && index < projects.length - 1) {
+        setIndex((prevIndex) => prevIndex + 1);
+        setIsScrolling(true);
+      } else if (event.deltaY < 0 && index > 0) {
+        setIndex((prevIndex) => prevIndex - 1);
+        setIsScrolling(true);
+      }
+    },
+    [index, projects.length, isScrolling]
+  );
+
+  useEffect(() => {
+    const debouncedScroll = (event) => {
+      handleScroll(event);
+    };
+
+    window.addEventListener("wheel", debouncedScroll);
+    return () => window.removeEventListener("wheel", debouncedScroll);
+  }, [handleScroll]);
+
+  useEffect(() => {
+    if (isScrolling) {
+      const timer = setTimeout(() => {
+        setIsScrolling(false);
+      }, 800); // Duration should match the transition duration
+      return () => clearTimeout(timer);
+    }
+  }, [isScrolling]);
+  
 
   return (
     <div className="project-display-container">
@@ -49,19 +70,26 @@ const ProjectDisplay = () => {
       </div>
 
       <div className="vertical-project-display-container">
-        <div className="project-cards-container">
-          {projects.map((project) => (
+        <motion.div
+          initial={{ y: "0vh" }}
+          animate={{ y: `-${index * 100}vh` }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="sections-wrapper"
+        >
+          {sortedProjects.map((project) => (
             <div
               key={project._id}
               className="project-card"
-              ref={(el) => (projectCardRefs.current[project._id] = el)}
+              ref={(el) => {
+                projectCardRefs.current[project._id] = el;
+              }}
             >
               <BounceInView>
                 <Card project={project} />
               </BounceInView>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

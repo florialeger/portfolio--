@@ -1,0 +1,9 @@
+.home-presentation-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 80%;
+    min-width: calc(393px - 48px);
+    margin-inline: auto;
+  }

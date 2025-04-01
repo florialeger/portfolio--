@@ -1,11 +1,19 @@
-import React from "react";
+import React, {useMemo} from "react";
 import ProjectDisplay from "../components/Project/ProjectDisplay";
 import "./Pages.css";
 
-const Work = () => {
+const Work = ({ projects }) => {
+  const workProjects = useMemo(() => {
+    return projects.filter((item) => item.schemaType === "project");
+  }, [projects]);
+
   return (
     <div className="work-container">
-        <ProjectDisplay />
+      {workProjects.length > 0 ? (
+        <ProjectDisplay projects={workProjects} />
+      ) : (
+        <p>No work projects available.</p>
+      )}
     </div>
   );
 };

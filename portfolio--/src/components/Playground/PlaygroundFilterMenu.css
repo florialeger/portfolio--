@@ -1,0 +1,65 @@
+.playground-filter-menu {
+  position: fixed;
+  bottom: 2.8em;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(80vw, 400px);
+  min-width: 300px;
+  height: 3.4em;
+  background: var(--backgroundNavLinks);
+  backdrop-filter: blur(48px);
+  border-radius: 1.15em;
+  box-shadow: var(--shadows--mini);
+  overflow: hidden;
+  padding: 0.4em;
+  z-index: 1001;
+}
+
+.background-slider-playground {
+  position: absolute;
+  top: 0.4em;
+  left: 0;
+  height: calc(100% - 0.8em);
+  width: calc(100% - 0.8em);
+  z-index: 1;
+  border-radius: calc(1.15em - 0.4em);
+}
+
+.filter-options {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+}
+
+.filter-option {
+  flex: 1;
+  text-align: center;
+  padding: 0.5em 0;
+  cursor: pointer;
+  font-size: var(--font-size-button);
+  color: var(--textSecondary);
+  transition: color 0.3s ease;
+}
+
+.filter-option.active {
+  color: var(--textDefault);
+}
+
+@media (max-width: 680px) {
+  .playground-filter-menu {
+    bottom: 1em;
+    width: calc(100% - 6em);
+    border-radius: 1.5em;
+  }
+  .background-slider-playground {
+    border-radius: calc(1.5em - 0.4em);
+  }
+  
+}

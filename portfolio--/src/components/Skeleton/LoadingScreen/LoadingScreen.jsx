@@ -1,38 +1,77 @@
 import React, { useEffect } from "react";
 import "./LoadingScreen.css";
 
-const LoadingScreen = ({ setLoading }) => {
+// Changed prop name from setLoading to onFinished for clarity
+const LoadingScreen = ({ onFinished }) => {
   useEffect(() => {
     const signs = document.querySelectorAll(".path");
+    // Check if signs exist before proceeding
+    if (!signs || signs.length === 0) {
+      console.warn("LoadingScreen: SVG paths not found.");
+      // If paths aren't found, maybe finish immediately? Or after a small delay?
+      const fallbackTimeout = setTimeout(() => {
+        if (typeof onFinished === "function") {
+          onFinished(false); // Indicate maybe an issue, or just finish
+        }
+      }, 100); // Short delay
+      return () => clearTimeout(fallbackTimeout);
+    }
+
     const animationDurations = [1, 1.6, 0.2];
     const delayBetweenSigns = 100;
     let currentSign = 0;
 
     function animateSign() {
       if (currentSign < signs.length) {
-        const path = signs[currentSign].querySelector("path");
-        const length = path.getTotalLength();
-        path.style.strokeDasharray = length;
-        path.style.strokeDashoffset = length;
-        path.style.animation = `dash ${animationDurations[currentSign]}s ease-in-out forwards `;
+        const path = signs[currentSign]?.querySelector("path"); // Optional chaining
 
-        path.addEventListener(
-          "animationend",
-          () => {
+        // Check if path exists and has getTotalLength method
+        if (path && typeof path.getTotalLength === "function") {
+          const length = path.getTotalLength();
+          path.style.strokeDasharray = `${length} ${length}`; // Ensure correct syntax
+          path.style.strokeDashoffset = length;
+          // Ensure animation name matches CSS if defined elsewhere, or define inline
+          path.style.animation = `dash ${animationDurations[currentSign]}s ease-in-out forwards`;
+
+          const animationEndHandler = () => {
             currentSign++;
             setTimeout(animateSign, delayBetweenSigns);
-          },
-          { once: true }
-        );
+          };
+
+          path.addEventListener("animationend", animationEndHandler, {
+            once: true,
+          });
+
+          // Cleanup function for the effect to remove listener if component unmounts mid-animation
+          return () => {
+            path.removeEventListener("animationend", animationEndHandler);
+          };
+        } else {
+          console.warn(
+            `LoadingScreen: Path or getTotalLength not found for sign index ${currentSign}`
+          );
+          // Skip to next sign or handle error
+          currentSign++;
+          setTimeout(animateSign, delayBetweenSigns); // Try next sign
+        }
       } else {
-        setTimeout(() => {
-          setLoading(false);
-        }, 800);
+        // All signs animated, wait a bit then call onFinished
+        const finishTimeout = setTimeout(() => {
+          if (typeof onFinished === "function") {
+            onFinished(false); // Call the callback passed from main.jsx
+          }
+        }, 800); // Keep the final delay
+
+        return () => clearTimeout(finishTimeout); // Cleanup timeout
       }
     }
 
-    animateSign();
-  }, [setLoading]);
+    // Start the animation sequence
+    const cleanupAnimation = animateSign();
+
+    // Return cleanup function from useEffect
+    return cleanupAnimation;
+  }, [onFinished]);
   return (
     <div className="svg-container">
       <svg

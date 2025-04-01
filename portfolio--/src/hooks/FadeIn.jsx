@@ -16,7 +16,7 @@ const fadeInVariants = {
 
 export const FadeIn = ({ children, duration = 0.5, delay = 0 }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, margin: '-20% 0px' });
 
   return (
     <motion.div

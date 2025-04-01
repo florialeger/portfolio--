@@ -6,8 +6,8 @@ export const themes = {
     backgroundInvert:
       "linear-gradient(to bottom, var(--gray-900), rgba(54, 54, 54, 1))",
     backgroundDetailled: "var(--gray-100)",
-    backgroundNavLinks: "rgba(175, 175, 175, 0.2)",
-    backgroundNavReduced: "rgba(221, 221, 221, 0.95)",
+    backgroundNavLinks: "rgba(202, 202, 202, 0.5)",
+    backgroundNavReduced: "rgba(221, 221, 221, 0.5)",
 
     gradientTop: "rgba(255, 255, 255, 0)",
     gradientMiddle: "rgba(255, 255, 255, 0.9)",

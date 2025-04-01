@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { debounce } from "lodash";
 
 export const useMousePosition = (containerRefs) => {
   const [positions, setPositions] = useState(containerRefs.map(() => ({ x: 0, y: 0 })));
 
   useEffect(() => {
-    const updatePosition = (index, x, y) => {
+    const updatePosition = debounce((index, x, y) => {
       if (containerRefs[index] && containerRefs[index].current) {
         const rect = containerRefs[index].current.getBoundingClientRect();
         if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
@@ -18,7 +19,7 @@ export const useMousePosition = (containerRefs) => {
           });
         }
       }
-    };
+    }, 50); // Debounce updates to every 50ms
 
     const handleMouseMove = (ev) => {
       containerRefs.forEach((ref, index) => {
@@ -26,20 +27,8 @@ export const useMousePosition = (containerRefs) => {
       });
     };
 
-    const handleTouchMove = (ev) => {
-      const touch = ev.touches[0];
-      containerRefs.forEach((ref, index) => {
-        updatePosition(index, touch.clientX, touch.clientY);
-      });
-    };
-
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("touchmove", handleTouchMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("touchmove", handleTouchMove);
-    };
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [containerRefs]);
 
   return positions;

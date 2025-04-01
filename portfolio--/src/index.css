@@ -13,12 +13,12 @@
 }
 
 :root {
-  --font-family-headline: -apple-system-headline, -apple-system, Inter,
-    system-ui, Avenir, Helvetica, Arial, sans-serif, "Monda";
+  --font-family-headline:-apple-system-headline, -apple-system, Inter,
+    system-ui, Avenir, Helvetica, Arial, sans-serif;
   --font-family-subheadline: -apple-system-subheadline, -apple-system, Inter,
-    system-ui, Avenir, Helvetica, Arial, sans-serif, "Monda";
+    system-ui, Avenir, Helvetica, Arial, sans-serif;
   --font-family-body: -apple-system-body, -apple-system, Inter, system-ui,
-    Avenir, Helvetica, Arial, sans-serif, "Monda";
+    Avenir, Helvetica, Arial, sans-serif;
   --font-family-secondary: 'Roboto Mono', monospace, -apple-system, Inter, system-ui, Avenir,
     Helvetica, Arial, sans-serif;
 
@@ -29,7 +29,7 @@
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
 
-  --font-size-headline: 2.5em;
+  --font-size-headline: 4em;
   --font-size-subheadline: 1.5em;
   --font-size-button: 1.25em;
   --font-size-primary: 1.125em;
@@ -202,7 +202,7 @@ ol {
 
 @media (max-width: 1200px) {
   :root {
-    --font-size-headline: 2.375em;
+    --font-size-headline:3.375em;
     --font-size-subheadline: 1.4375em;
     --font-size-button: 1.25em;
     --font-size-primary: 1.125em;
@@ -213,7 +213,7 @@ ol {
 
 @media (max-width: 768px) {
   :root {
-    --font-size-headline: 1.875em;
+    --font-size-headline: 2.875em;
     --font-size-subheadline: 1.125em;
     --font-size-button: 1.25em;
     --font-size-primary: 1.0625em;
@@ -224,7 +224,7 @@ ol {
 
 @media (max-width: 480px) {
   :root {
-    --font-size-headline: 1.875em;
+    --font-size-headline: 2.375em;
     --font-size-subheadline: 1.125em;
     --font-size-button: 1.125em;
     --font-size-primary: 1.0625em;
