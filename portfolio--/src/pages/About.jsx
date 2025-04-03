@@ -1,8 +1,11 @@
 import React from "react";
-import Mii from "../components/Mii/Mii";
-import { Text } from "../components/ui/Text/Text";
-import { FadeIn } from "../hooks/FadeIn";
-import "./Pages.css";
+import Mii from "@ui/Mii";
+import { Text } from "@ui/Text";
+import { FadeIn } from "@hooks/FadeIn";
+import Footer from "@components/skeleton/Footer";
+import ResumeButton from "@components/ui/Button";
+
+import "@pages/Pages.css";
 
 function About() {
   return (
@@ -23,11 +26,17 @@ function About() {
           <div className="about-text-container">
             <Text type="p" className="text" style={{ marginBottom: "1.2em" }}>
               I'm currently a second-year student at ENSC, a cognitive
-              engineering school in Bordeaux...
+              engineering school in Bordeaux, with a strong passion for UI and
+              UX design, particularly in accessibility. My background has
+              provided me with a solid foundation in user-friendly interface
+              design.
             </Text>
             <Text type="p" className="text" style={{ marginBottom: "1.2em" }}>
               I've been drawing for nearly twenty years, drawing inspiration
-              from talented artists...
+              from talented artists to enhance my skills. While I mostly create
+              for myself, I find joy in making art for others. Although my
+              client projects have been informal, they taught me about managing
+              deadlines and handling feedback.
             </Text>
             <Text type="p" className="text" style={{ marginBottom: "1.2em" }}>
               Lately, I've become increasingly interested in web design,
@@ -44,7 +53,9 @@ function About() {
             <Mii />
           </div>
         </div>
+        <ResumeButton />
       </FadeIn>
+      <Footer />
     </div>
   );
 }

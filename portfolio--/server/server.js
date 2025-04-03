@@ -47,7 +47,6 @@ const Project = mongoose.model("Project", projectSchema);
 const Playground = mongoose.model("Playground", playgroundSchema);
 
 app.get('/all-items', async (req, res) => {
-  console.log("Fetching all items..."); // Debugging
   try {
     const projects = await Project.find().lean();
     const playgrounds = await Playground.find().lean();

@@ -1,6 +1,6 @@
-import React, { useState, useRef, memo } from "react";
+import React, { useState, useEffect, useRef, memo } from "react";
 import { motion } from "framer-motion";
-import { AllIcon, UxIcon, IllustIcon } from "../ui/Icon/NavIcons"; // Import icons
+import { AllIcon, UxIcon, IllustIcon } from "@ui/icon/NavIcon";
 import "./PlaygroundFilterMenu.css";
 
 const BackgroundSlider = memo(({ activeIndex, linkRefs, hoveredIndex }) => {
@@ -17,9 +17,8 @@ const BackgroundSlider = memo(({ activeIndex, linkRefs, hoveredIndex }) => {
       }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       style={{
-        background: "var(--backgroundMain)",
+        background: "var(--colorPrimary0)",
         backdropFilter: "blur(24px)",
-        border: "1.5px solid var(--backgroundNavReduced)",
         boxShadow: "var(--shadows--mini)",
       }}
     />
@@ -35,11 +34,44 @@ const PlaygroundFilterMenu = ({ currentFilter, setFilter }) => {
   };
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [isVisible, setIsVisible] = useState(true);
   const linkRefs = filters.map(() => useRef(null));
   const activeIndex = filters.indexOf(currentFilter);
 
+  useEffect(() => {
+    const handleResizeAndScroll = () => {
+      const scrollPosition = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const viewportWidth = window.innerWidth;
+
+      // Hide the menu if the viewport width is less than 680px
+      if (viewportWidth < 680) {
+        setIsVisible(false);
+        return;
+      }
+
+      // Check if the user has scrolled past the last 100vh
+      if (scrollPosition + viewportHeight >= documentHeight - viewportHeight) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleResizeAndScroll);
+    window.addEventListener("resize", handleResizeAndScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleResizeAndScroll);
+      window.removeEventListener("resize", handleResizeAndScroll);
+    };
+  }, []);
+
   return (
-    <div className="playground-filter-menu">
+    <div
+      className={`playground-filter-menu ${isVisible ? "visible" : "hidden"}`}
+    >
       <BackgroundSlider
         activeIndex={activeIndex}
         linkRefs={linkRefs}
@@ -47,7 +79,7 @@ const PlaygroundFilterMenu = ({ currentFilter, setFilter }) => {
       />
       <ul className="filter-options">
         {filters.map((filter, index) => {
-          const IconComponent = icons[filter]; // Dynamically select the icon
+          const IconComponent = icons[filter];
           const isHovered = hoveredIndex === index;
           const isActive = currentFilter === filter;
 
@@ -62,7 +94,13 @@ const PlaygroundFilterMenu = ({ currentFilter, setFilter }) => {
             >
               <IconComponent
                 hovered={isHovered || isActive} // Pass hovered or active state
-                color={isActive ? "var(--textDefault)" : isHovered ?  "var(--textDefault)" : "var(--textSecondary)"}
+                color={
+                  isActive
+                    ? "var(--textDefault)"
+                    : isHovered
+                    ? "var(--textDefault)"
+                    : "var(--textSecondary)"
+                }
               />
             </li>
           );

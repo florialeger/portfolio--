@@ -1,6 +1,6 @@
 import React from "react";
-import { Text, MotionText } from "../ui/Text/Text";
-import { FadeIn } from "./../../hooks/FadeIn";
+import { Text, MotionText } from "@ui/Text";
+import { FadeIn } from "@hooks/FadeIn";
 import "./HomePresentation.css";
 
 const HomePresentation = () => {

@@ -1,0 +1,131 @@
+import React, { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import { Text } from "@components/ui/Text";
+import { useMousePosition } from "@hooks/useMousePosition";
+import { LoadingAnimationWithoutComplete } from "@components/skeleton/LoadingAnimation/LoadingAnimation";
+import ContactForm from "@components/ui/ContactForm";
+import useMagneticEffect from "@hooks/useMagneticEffect";
+import "./Footer.css";
+
+const socials = [
+  { name: "Bento", url: "http://bento.me/floria", icon: "bento.png" },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/florialger",
+    icon: "twitter.png",
+  },
+  {
+    name: "LinkedIn",
+    url: "http://www.linkedin.com/in/floria-leger-a319442b2",
+    icon: "linkedIn.png",
+  },
+  { name: "GitHub", url: "https://github.com/florialeger", icon: "github.png" },
+  { name: "Figma", url: "http://figma.com/@florialeger", icon: "figma.png" },
+  {
+    name: "Procreate",
+    url: "https://folio.procreate.com/juju999999997",
+    icon: "procreate.png",
+  },
+];
+
+const SocialIcon = ({ name, url, icon }) => {
+  const [hovered, setHovered] = useState(false);
+  const containerRef = useRef(null);
+  const [mousePosition] = useMousePosition([containerRef]); // Get mouse position relative to this container
+
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="social-icon"
+      ref={containerRef}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <img src={`/src/assets/icon/${icon}`} alt={name} />
+      {hovered && (
+        <motion.div
+          className="tooltip"
+          style={{
+            top: mousePosition.y - 70,
+            left: mousePosition.x - 70,
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2, ease: "easeInOut" }}
+        >
+          <Text type="span" className="tooltip-text text">
+            {name}
+          </Text>
+        </motion.div>
+      )}
+    </a>
+  );
+};
+
+const GetInTouch = () => (
+  <div className="get-in-touch">
+    <LoadingAnimationWithoutComplete id="footer-loading-animation" />
+    <Text type="h2" className="text button">
+      Get in touch
+    </Text>
+    <div className="social-icons">
+      {socials.map((social) => (
+        <SocialIcon key={social.name} {...social} />
+      ))}
+    </div>
+  </div>
+);
+
+const ContactMe = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  // Refs for the container and the button
+  const containerRef = useRef(null);
+  const buttonRef = useRef(null);
+
+  // Use the magnetic effect hook
+  const [positions, setHoveredIndex] = useMagneticEffect(containerRef, [
+    buttonRef,
+  ]);
+
+  return (
+    <div className="contact-me" ref={containerRef}>
+      <img
+        src="/src/assets/icon/mail.png"
+        alt="Mail Background"
+        className="mail-background"
+      />
+      <Text
+        ref={buttonRef} // Attach the ref to the button
+        type="button"
+        className="contact-button button"
+        style={{
+          transform: `translate(${positions[0]?.x || 0}px, ${
+            positions[0]?.y || 0
+          }px) scale(${positions[0]?.scale || 1})`,
+        }}
+        onMouseEnter={() => setHoveredIndex(0)} // Set hovered index when mouse enters
+        onMouseLeave={() => setHoveredIndex(null)} // Reset hovered index when mouse leaves
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsFormOpen(true);
+        }}
+      >
+        Contact Me
+      </Text>
+      {isFormOpen && <ContactForm onClose={() => setIsFormOpen(false)} />}
+    </div>
+  );
+};
+
+const Footer = () => (
+  <footer className="footer">
+    <GetInTouch />
+    <ContactMe />
+  </footer>
+);
+
+export default Footer;

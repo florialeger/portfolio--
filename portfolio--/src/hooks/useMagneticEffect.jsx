@@ -31,7 +31,7 @@ const useMagneticEffect = (containerRef, imageRefs) => {
       });
 
       setPositions(newPositions);
-    }, 50); // Throttle updates to every 50ms
+    }, 50);
 
     const handleMouseLeave = () => {
       setPositions(imageRefs.map(() => ({ x: 0, y: 0, scale: 1 })));

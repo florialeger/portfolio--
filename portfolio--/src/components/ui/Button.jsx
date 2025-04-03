@@ -1,0 +1,45 @@
+import React, { useState } from "react";
+import { Text } from "@components/ui/Text";
+import {
+  DownloadTopIcon,
+  DownloadBottomIcon,
+} from "@components/ui/Icon/SignIcon";
+import "./Button.css";
+
+const ResumeButton = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const iconSize = `calc(var(--font-size-button) * 2.6`;
+  const strokeWidth = `calc(var(--font-size-button) * 4)`;
+
+  return (
+    <a
+      href="/src/assets/pdf/cv.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`resume-button ${isHovered ? "hovered" : ""}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <Text type="span" className="resume-text button">
+        resume
+      </Text>
+      <div className="resume-icon-container">
+        <DownloadBottomIcon
+          width={iconSize}
+          color="var(--textWhite)"
+          strokeWidth={strokeWidth}
+          hovered={isHovered}
+        />
+        <DownloadTopIcon
+          width={iconSize}
+          color="var(--textWhite)"
+          strokeWidth={strokeWidth}
+          hovered={isHovered}
+        />
+      </div>
+    </a>
+  );
+};
+
+export default ResumeButton;

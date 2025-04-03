@@ -1,12 +1,13 @@
 import React, { useState, useEffect, lazy } from "react";
-import { Text } from "../components/ui/Text/Text";
-import { FadeIn } from "../hooks/FadeIn";
-import { BounceInView } from "../hooks/useBounceInView";
-import PlaygroundFilterMenu from "../components/Playground/PlaygroundFilterMenu";
-import Description from "../components/Playground/Description";
-import "./Pages.css";
+import { Text } from "@components/ui/Text";
+import { FadeIn } from "@hooks/FadeIn";
+import { BounceInView } from "@hooks/useBounceInView";
+import PlaygroundFilterMenu from "@components/Playground/PlaygroundFilterMenu";
+import Description from "@components/Playground/Description";
+import Footer from "@components/skeleton/Footer";
+import "@pages/Pages.css";
 
-const Card = lazy(() => import("../components/ui/Card/Card"));
+const Card = lazy(() => import("@ui/Card"));
 
 const PlaygroundHeader = () => {
   return (
@@ -68,7 +69,7 @@ function Playground({ projects }) {
       (item) => item.schemaType === "playground"
     );
 
-    // Sort playgrounds by the "created" field (most recent first)
+    // Sort playgrounds by the "created" field 
     const sortedPlaygrounds = [...playgroundProjects].sort(
       (a, b) => new Date(b.created) - new Date(a.created)
     );
@@ -100,6 +101,14 @@ function Playground({ projects }) {
     }
   }, [filter, playgrounds]);
 
+  // Scroll to the top of the grid when the filter changes
+ useEffect(() => {
+   const gridElement = document.querySelector(".playground-content-container");
+   if (gridElement) {
+     gridElement.scrollIntoView({ behavior: "smooth", block: "start" });
+   }
+ }, [filter]);
+
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
     if (newFilter === "ALL") {
@@ -121,6 +130,7 @@ function Playground({ projects }) {
         currentFilter={filter}
         setFilter={handleFilterChange}
       />
+      <Footer/>
     </div>
   );
 }

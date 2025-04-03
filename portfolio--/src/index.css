@@ -30,60 +30,14 @@
   --font-weight-extrabold: 800;
 
   --font-size-headline: 4em;
-  --font-size-subheadline: 1.5em;
+  --font-size-subheadline: 2.25em;
   --font-size-button: 1.25em;
   --font-size-primary: 1.125em;
   --font-size-secondary: 0.9375em;
   --font-size-tertiary: 0.875em;
 
-    /* Palette principale */
-    --colorPrimary0: rgba(252, 252, 252, 1);
-    --colorPrimary1: rgba(243, 188, 80, 1);
-    --colorPrimary2: rgba(252, 191, 73, 1);
-    --colorPrimary3: rgba(250, 149, 0, 1);
-    --colorPrimary4: rgba(235, 100, 36, 1);
-    --colorPrimary5: rgba(214, 40, 40, 1);
-  
-    --colorAccent: rgba(253, 201, 100, 1);
-
-    --backgroundMain: linear-gradient(to bottom, var(--colorPrimary0), rgba(248, 248, 248, 1));
-    --backgroundTheme: var(--colorPrimary0),
-    --backgroundInvert: linear-gradient(to bottom, var(--gray-900), rgba(54, 54, 54, 1));
-    --backgroundPlayground: linear-gradient(to bottom, var(--colorAccent), var(--colorPrimary1));
-    --backgroundPhoto: rgba(255, 255, 255, 1);
-    --backgroundNavLinks: var(--gray-200);
-  
-    --textDefault: rgba(51, 51, 51, 1);
-    --textInverted: rgba(241, 240, 237, 1);
-    --textPlaygroundInactive: rgba(180, 138, 56, 1);
-    --textWhite: rgba(255, 255, 255, 1);
-    --textLinkReadMore: rgba(6, 167, 226, 1);
-    --textLinkExternal: rgba(53, 41, 181, 1);
-    --textSecondary: rgba(113, 113, 113, 1);
-    --textTertiary: rgb(188, 188, 188);
-
-    --buttonNavbarReduced: linear-gradient(to bottom, var(--colorPrimary2), var(--colorPrimary4));
-    --buttonProjectBg: var(--colorPrimary4);
-    --buttonProjectBorder: rgba(237, 129, 78, 1);
-    --buttonBackBg: var(--colorSecondary);
-    --buttonBackBorder: rgba(114, 140, 175, 1);
-    --buttonResumeBg: linear-gradient(
-      to bottom,
-      rgba(51, 51, 51, 1),
-      rgba(46, 46, 46, 1)
-    );
-    --buttonResumeBorder: linear-gradient(
-      to bottom,
-      rgba(45, 45, 45, 1),
-      rgba(33, 33, 33, 1)
-    );
-    --carouselInactive: rgba(241, 241, 241, 1);
-    --carouselActive: var(--colorPrimary4);
-  
-    --iconProcreateBg: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
-    --iconCodeBg: linear-gradient(to bottom, #f26522, #d9541a);
-    --iconFigmaBg: linear-gradient(to bottom, #1e1e1e, #1a1a1a);
-
+  --gray-10: rgb(254, 254, 254); 
+  --gray-50: rgb(250, 250, 250); 
   --gray-100: rgb(245, 245, 245); 
   --gray-200: rgb(230, 230, 230);
   --gray-300: rgba(204, 204, 204, 1);
@@ -203,7 +157,7 @@ ol {
 @media (max-width: 1200px) {
   :root {
     --font-size-headline:3.375em;
-    --font-size-subheadline: 1.4375em;
+    --font-size-subheadline: 1.875em;
     --font-size-button: 1.25em;
     --font-size-primary: 1.125em;
     --font-size-secondary: 0.9375em;
@@ -214,7 +168,7 @@ ol {
 @media (max-width: 768px) {
   :root {
     --font-size-headline: 2.875em;
-    --font-size-subheadline: 1.125em;
+    --font-size-subheadline: 1.625em;
     --font-size-button: 1.25em;
     --font-size-primary: 1.0625em;
     --font-size-secondary: 0.875em;
@@ -225,7 +179,7 @@ ol {
 @media (max-width: 480px) {
   :root {
     --font-size-headline: 2.375em;
-    --font-size-subheadline: 1.125em;
+    --font-size-subheadline: 1.425em;
     --font-size-button: 1.125em;
     --font-size-primary: 1.0625em;
     --font-size-secondary: 0.875em;

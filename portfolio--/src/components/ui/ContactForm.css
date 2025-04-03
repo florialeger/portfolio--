@@ -1,0 +1,115 @@
+.contact-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+
+
+
+.contact-form {
+  background: var(--gray-50);
+  border: 2px solid var(--gray-200);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 70vh;
+  width: 60vw;
+  padding: 2em;
+  border-radius: 1em;
+  position: fixed;
+  top: 15vh;
+  left: 20vw;
+  margin: auto;
+  overflow-y: auto;
+  z-index: 1001;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.form-fields-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: 2px solid var(--gray-200);
+  padding-bottom: 1em;
+}
+
+.form-group.no-border {
+  border-bottom: none;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.contact-form textarea {
+  resize: none;
+  height: 6em;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--textPrimary);
+}
+
+.text-secondary {
+  color: var(--textTertiary);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+}
+
+.send-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
+}
+
+.send-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gray-400);
+  color: var(--textWhite);
+  padding: 0.5em;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: not-allowed;
+  transition: background-color 0.3s ease, cursor 0.3s ease;
+}
+
+.send-button.active {
+  background: var(--textLink);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.send-button:hover.active {
+  transform: scale(1.05);
+}

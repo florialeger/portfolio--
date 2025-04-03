@@ -1,40 +1,39 @@
 import React, { StrictMode, useState, useEffect, Suspense, lazy } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import axios from "axios"; // Import axios here
-import { themes } from "./assets/styles/theme.jsx";
-import { ScrollPositionProvider } from "./context/ScrollPositionContext";
-import "./index.css";
-import "./App.css"; // Import App.css for potential .app-loading class
+import axios from "axios";
+import { themes } from "@assets/styles/theme.jsx";
+import { ScrollPositionProvider } from "@context/ScrollPositionContext";
+import useScrollRestoration from "@hooks/useScrollRestoration"; // Import the hook
+import "@/index.css";
+import "@/App.css";
 
-// Import the specific loading animations needed
-import { LoadingAnimationWithoutComplete } from "./components/Skeleton/LoadingAnimation/LoadingAnimation.jsx"; // Infinite loop version
-import LoadingAnimation from "./components/Skeleton/LoadingAnimation/LoadingAnimation.jsx"; // Version with onComplete
+import { LoadingAnimationWithoutComplete } from "@components/skeleton/LoadingAnimation/LoadingAnimation.jsx";
+import LoadingAnimation from "@components/skeleton/LoadingAnimation/LoadingAnimation.jsx";
 
 // Lazy load main components
 const App = lazy(() => import("./App.jsx"));
-const Navigation = lazy(() =>
-  import("./components/Skeleton/Navigation/Navigation.jsx")
-);
+const Navigation = lazy(() => import("@components/skeleton/Navigation.jsx"));
 const ThemeSwitcher = lazy(() =>
-  import("./components/Skeleton/ThemeSwitcher/ThemeSwitcher.jsx")
+  import("@components/skeleton/ThemeSwitcher.jsx")
 );
 const LoadingScreen = lazy(() =>
-  import("./components/Skeleton/LoadingScreen/LoadingScreen.jsx")
+  import("@components/skeleton/LoadingScreen/LoadingScreen.jsx")
 );
 
-// react-scan initialization (keep as is if needed)
-import { scan } from "react-scan";
-scan({ enabled: true });
+// Wrapper component for scroll restoration
+const ScrollRestorationWrapper = ({ children }) => {
+  useScrollRestoration(); // Call the hook here, inside the BrowserRouter context
+  return children;
+};
 
 function Main() {
   const [theme, setTheme] = useState("white");
-  // State Management Refactor:
-  const [isLoadingScreenActive, setIsLoadingScreenActive] = useState(true); // Tracks if LoadingScreen is running
-  const [isFetchingData, setIsFetchingData] = useState(true); // Tracks if data is being fetched
+  const [isLoadingScreenActive, setIsLoadingScreenActive] = useState(true);
+  const [isFetchingData, setIsFetchingData] = useState(true);
   const [isLoadingAnimationActive, setIsLoadingAnimationActive] =
-    useState(false); // Tracks if LoadingAnimation is active
-  const [projects, setProjects] = useState([]); // Stores the fetched data
+    useState(false);
+  const [projects, setProjects] = useState([]);
 
   // Apply theme
   useEffect(() => {
@@ -48,7 +47,7 @@ function Main() {
   useEffect(() => {
     const fetchAllItems = async () => {
       setIsFetchingData(true);
-      setIsLoadingAnimationActive(true); // Activate LoadingAnimation
+      setIsLoadingAnimationActive(true);
       try {
         const response = await axios.get("http://localhost:5000/all-items");
         setProjects(response.data);
@@ -57,10 +56,10 @@ function Main() {
         setProjects([]);
       } finally {
         setTimeout(() => {
-          setIsFetchingData(false); // Mark data fetching as complete
+          setIsFetchingData(false);
         }, 1200); // Ensure LoadingAnimation lasts for at least 1.2 seconds
         setTimeout(() => {
-          setIsLoadingAnimationActive(false); // Deactivate LoadingAnimation
+          setIsLoadingAnimationActive(false);
         }, 1200); // Ensure LoadingAnimation is visible for 1.2 seconds
       }
     };
@@ -72,28 +71,33 @@ function Main() {
     <StrictMode>
       <BrowserRouter>
         <ScrollPositionProvider>
-          <Suspense fallback={<LoadingAnimationWithoutComplete />}>
-            {isLoadingScreenActive ? (
-              <LoadingScreen onFinished={() => setIsLoadingScreenActive(false)} />
-            ) : isFetchingData || isLoadingAnimationActive ? (
-              <div className="App app-loading">
-                <LoadingAnimation onComplete={() => {}} />
-              </div>
-            ) : (
-              <>
-                <App projects={projects} />
-                <Navigation />
-                <ThemeSwitcher
-                  currentTheme={theme}
-                  setCurrentTheme={setTheme}
-                  setTheme={setTheme}
+          <ScrollRestorationWrapper>
+            <Suspense fallback={<LoadingAnimationWithoutComplete />}>
+              {isLoadingScreenActive ? (
+                <LoadingScreen
+                  onFinished={() => setIsLoadingScreenActive(false)}
                 />
-              </>
-            )}
-          </Suspense>
+              ) : isFetchingData || isLoadingAnimationActive ? (
+                <div className="App app-loading">
+                  <LoadingAnimation onComplete={() => {}} />
+                </div>
+              ) : (
+                <>
+                  <App projects={projects} />
+                  <Navigation />
+                  <ThemeSwitcher
+                    currentTheme={theme}
+                    setCurrentTheme={setTheme}
+                    setTheme={setTheme}
+                  />
+                </>
+              )}
+            </Suspense>
+          </ScrollRestorationWrapper>
         </ScrollPositionProvider>
       </BrowserRouter>
     </StrictMode>
   );
 }
+
 createRoot(document.getElementById("root")).render(<Main />);

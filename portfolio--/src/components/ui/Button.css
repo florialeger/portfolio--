@@ -1,0 +1,58 @@
+.resume-button {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.8em;
+  padding: 0.5em 3em 1.2em 3em;
+  background-color: var(--colorPrimary6);
+  border-radius: 100px;
+  text-decoration: none;
+  cursor: pointer;
+  width: fit-content;
+  transition: transform 0.3s ease, background-color 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.resume-button:focus {
+  outline: none;
+}
+
+.resume-button.hovered {
+  transform: rotate(-3deg);
+  background-color: var(--colorPrimary5);
+  box-shadow: 0 0px 16px rgba(0, 0, 0, 0.2);
+}
+
+.resume-text {
+  color: var(--textWhite);
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.resume-icon-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--font-size-button) * 2.6);
+  height: calc(var(--font-size-button) * 2.6);
+}
+
+.resume-icon-container svg:nth-child(2) {
+  position: absolute;
+  top: 0;
+  transition: transform 0.3s ease;
+  transform: translateY(0);
+}
+
+.resume-button.hovered .resume-icon-container svg:nth-child(2) {
+  transform: translateY(0.5em);
+}
+
+.resume-icon-container svg:nth-child(1) {
+  position: absolute;
+  bottom: 0;
+}
