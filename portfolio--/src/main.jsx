@@ -23,7 +23,7 @@ const LoadingScreen = lazy(() =>
 
 // Wrapper component for scroll restoration
 const ScrollRestorationWrapper = ({ children }) => {
-  useScrollRestoration(); // Call the hook here, inside the BrowserRouter context
+  useScrollRestoration();
   return children;
 };
 
@@ -65,7 +65,7 @@ function Main() {
     };
 
     fetchAllItems();
-  }, []); // Empty dependency array ensures this runs only once on mount
+  }, []); 
 
   return (
     <StrictMode>

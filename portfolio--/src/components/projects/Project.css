@@ -123,10 +123,8 @@
 
 .year-header.active {
   color: var(--textDefault);
-  background-color: var(--backgroundTheme);
   box-shadow: var(--shadows--mini);
-  border-bottom: transparent;
-  border-radius: 1.15em;
+  border-bottom: solid 3px var(--backgroundDetailled);
 }
 
 .project-items {

@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
 import "./LoadingScreen.css";
 
-// Changed prop name from setLoading to onFinished for clarity
 const LoadingScreen = ({ onFinished }) => {
   useEffect(() => {
     const signs = document.querySelectorAll(".path");
-    // Check if signs exist before proceeding
     if (!signs || signs.length === 0) {
       console.warn("LoadingScreen: SVG paths not found.");
       // If paths aren't found, maybe finish immediately? Or after a small delay?
@@ -42,7 +40,6 @@ const LoadingScreen = ({ onFinished }) => {
             once: true,
           });
 
-          // Cleanup function for the effect to remove listener if component unmounts mid-animation
           return () => {
             path.removeEventListener("animationend", animationEndHandler);
           };
@@ -50,26 +47,21 @@ const LoadingScreen = ({ onFinished }) => {
           console.warn(
             `LoadingScreen: Path or getTotalLength not found for sign index ${currentSign}`
           );
-          // Skip to next sign or handle error
           currentSign++;
-          setTimeout(animateSign, delayBetweenSigns); // Try next sign
+          setTimeout(animateSign, delayBetweenSigns); 
         }
       } else {
-        // All signs animated, wait a bit then call onFinished
         const finishTimeout = setTimeout(() => {
           if (typeof onFinished === "function") {
-            onFinished(false); // Call the callback passed from main.jsx
+            onFinished(false); 
           }
-        }, 800); // Keep the final delay
-
-        return () => clearTimeout(finishTimeout); // Cleanup timeout
+        }, 800);
+        return () => clearTimeout(finishTimeout); 
       }
     }
 
-    // Start the animation sequence
     const cleanupAnimation = animateSign();
 
-    // Return cleanup function from useEffect
     return cleanupAnimation;
   }, [onFinished]);
   return (
