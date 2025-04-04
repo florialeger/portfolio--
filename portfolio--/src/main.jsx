@@ -11,7 +11,7 @@ import "@/App.css";
 import {
   LoadingAnimation,
   LoadingAnimationWithoutComplete,
-} from "@components/skeleton/LoadingAnimation/LoadingAnimation.jsx";
+} from "./components/skeleton/LoadingAnimation/LoadingAnimation.jsx";
 
 // Lazy load main components
 const App = lazy(() => import("./App.jsx"));
