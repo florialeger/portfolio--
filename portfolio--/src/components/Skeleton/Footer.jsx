@@ -17,7 +17,7 @@ const socials = [
   {
     name: "LinkedIn",
     url: "http://www.linkedin.com/in/floria-leger-a319442b2",
-    icon: "linkedIn.png",
+    icon: "linkedin.png",
   },
   { name: "GitHub", url: "https://github.com/florialeger", icon: "github.png" },
   { name: "Figma", url: "http://figma.com/@florialeger", icon: "figma.png" },
@@ -43,7 +43,7 @@ const SocialIcon = ({ name, url, icon }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <img src={`/src/assets/icon/${icon}`} alt={name} />
+      <img src={`${icon}`} alt={name} />
       {hovered && (
         <motion.div
           className="tooltip"
@@ -94,7 +94,7 @@ const ContactMe = () => {
   return (
     <div className="contact-me" ref={containerRef}>
       <img
-        src="/src/assets/icon/mail.png"
+        src="/mail.png"
         alt="Mail Background"
         className="mail-background"
       />
