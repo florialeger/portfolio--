@@ -7,11 +7,11 @@ import React, {
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useSpring, animated } from "@react-spring/web";
-import { useScrollPosition } from "@context/ScrollPositionContext";
+import { useScrollPosition } from "@context/ScrollPositionContext.jsx";
 import "./Project.css";
-import { Text } from "@ui/Text";
-import {LoadingAnimation} from "@components/skeleton/LoadingAnimation/LoadingAnimation";
-import { CrossIcon } from "@ui/icon/SignIcon";
+import { Text } from "@ui/Text.jsx";
+import { LoadingAnimation } from "@components/skeleton/LoadingAnimation/LoadingAnimation.jsx";
+import { CrossIcon } from "@ui/icon/SignIcon.jsx";
 
 
 // Utility function to fetch project data

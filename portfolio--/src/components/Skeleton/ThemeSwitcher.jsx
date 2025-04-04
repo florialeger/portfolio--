@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
-import useThemeMotion from "@hooks/useThemeMotion";
-import { themes } from "@assets/styles/theme";
+import useThemeMotion from "@hooks/useThemeMotion.jsx";
+import { themes } from "@assets/styles/theme.jsx";
 import wheel from "@assets/svg/wheel.svg";
 import "./ThemeSwitcher.css";
 

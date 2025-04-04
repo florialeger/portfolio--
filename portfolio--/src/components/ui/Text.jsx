@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import useTypedText from "@hooks/useTypedText";
+import useTypedText from "@hooks/useTypedText.jsx";
 import "./Text.css";
 
 export const Text = ({ type, children, className, ...props }) => {

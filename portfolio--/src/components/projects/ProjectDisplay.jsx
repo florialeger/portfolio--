@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback, lazy } from "react";
-import ProjectList from "./ProjectList";
+import ProjectList from "./ProjectList.jsx";
 import "./Project.css";
-import { BounceInView } from "@hooks/useBounceInView";
+import { BounceInView } from "@hooks/useBounceInView.jsx";
 import { motion } from "framer-motion";
 
 const Card = lazy(() => import("@ui/Card"));

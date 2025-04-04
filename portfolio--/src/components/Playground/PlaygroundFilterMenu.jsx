@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, memo } from "react";
 import { motion } from "framer-motion";
-import { AllIcon, UxIcon, IllustIcon } from "@ui/icon/NavIcon";
+import { AllIcon, UxIcon, IllustIcon } from "@ui/icon/NavIcon.jsx";
 import "./PlaygroundFilterMenu.css";
 
 const BackgroundSlider = memo(({ activeIndex, linkRefs, hoveredIndex }) => {

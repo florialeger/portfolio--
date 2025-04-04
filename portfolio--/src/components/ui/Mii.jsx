@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import VanillaTilt from "vanilla-tilt";
-import { tiltOptions } from "@hooks/tiltOptions";
-import { useEyeMovement } from "@hooks/useEyeMovement";
+import { tiltOptions } from "@hooks/tiltOptions.jsx";
+import { useEyeMovement } from "@hooks/useEyeMovement.jsx";
 import miiSkin from "@assets/svg/mii.svg";
 import miiLeftEye from "@assets/svg/mii-left-eye.svg";
 import miiRightEye from "@assets/svg/mii-right-eye.svg";

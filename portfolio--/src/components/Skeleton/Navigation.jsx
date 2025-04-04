@@ -9,9 +9,14 @@ import React, {
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { debounce } from "lodash";
-import { Text } from "@ui/Text";
-import { LineIcon } from "@ui/icon/SignIcon";
-import { PlaygroundIcon, WorkIcon, AboutIcon, NameIcon } from "@ui/icon/NavIcon";
+import { Text } from "@ui/Text.jsx";
+import { LineIcon } from "@ui/icon/SignIcon.jsx";
+import {
+  PlaygroundIcon,
+  WorkIcon,
+  AboutIcon,
+  NameIcon,
+} from "@ui/icon/NavIcon.jsx";
 import "./Navigation.css";
 
 const navItems = [

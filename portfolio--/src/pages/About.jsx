@@ -1,9 +1,9 @@
 import React from "react";
-import Mii from "@ui/Mii";
-import { Text } from "@ui/Text";
-import { FadeIn } from "@hooks/FadeIn";
-import Footer from "@components/skeleton/Footer";
-import ResumeButton from "@components/ui/Button";
+import Mii from "@ui/Mii.jsx";
+import { Text } from "@ui/Text.jsx";
+import { FadeIn } from "@hooks/FadeIn.jsx";
+import Footer from "@components/skeleton/Footer.jsx";
+import ResumeButton from "@components/ui/Button.jsx";
 
 import "@pages/Pages.css";
 

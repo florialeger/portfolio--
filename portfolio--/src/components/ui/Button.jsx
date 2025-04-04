@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Text } from "@components/ui/Text";
+import { Text } from "@components/ui/Text.jsx";
 import {
   DownloadTopIcon,
   DownloadBottomIcon,
-} from "@components/ui/Icon/SignIcon";
+} from "@components/ui/Icon/SignIcon.jsx";
 import "./Button.css";
 
 const ResumeButton = () => {

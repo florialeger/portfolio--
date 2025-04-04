@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import ProjectDisplay from "@components/projects/ProjectDisplay";
+import ProjectDisplay from "@components/projects/ProjectDisplay.jsx";
 import "@pages/Pages.css";
 
 const Work = ({ projects }) => {

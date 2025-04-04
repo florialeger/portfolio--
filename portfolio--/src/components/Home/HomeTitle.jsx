@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import useSpringEnter from "@hooks/useSpringEnter";
-import useMagneticEffect from "@hooks/useMagneticEffect";
-import { Text } from "@ui/Text";
+import useSpringEnter from "@hooks/useSpringEnter.jsx";
+import useMagneticEffect from "@hooks/useMagneticEffect.jsx";
+import { Text } from "@ui/Text.jsx";
 import home1 from "@assets/img/home-1.png";
 import home2 from "@assets/img/home-2.png";
 import home3 from "@assets/img/home-3.png";

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import axios from "axios";
-import HomeTitle from "@components/Home/HomeTitle";
-import HomePresentation from "@components/Home/HomePresentation";
-import Footer from "@components/skeleton/Footer";
+import HomeTitle from "@components/Home/HomeTitle.jsx";
+import HomePresentation from "@components/Home/HomePresentation.jsx";
+import Footer from "@components/skeleton/Footer.jsx";
 
 import "./Pages.css";
 

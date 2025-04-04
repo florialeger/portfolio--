@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "@components/ui/Text";
+import { Text } from "@components/ui/Text.jsx";
 import "./Pages.css";
 
 const NotFound = () => {

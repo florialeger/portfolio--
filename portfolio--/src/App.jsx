@@ -4,13 +4,15 @@ import { AnimatePresence } from "framer-motion";
 import { LoadingAnimation } from "@components/skeleton/LoadingAnimation/LoadingAnimation.jsx"; 
 import "@/App.css";
 
-const Home = lazy(() => import(/* webpackPrefetch: true */ "@pages/Home"));
-const Work = lazy(() => import(/* webpackPrefetch: true */ "@pages/Work"));
-const Playground = lazy(() => import("@pages/Playground"));
-const About = lazy(() => import("@pages/About"));
+const Home = lazy(() => import(/* webpackPrefetch: true */ "@pages/Home.jsx"));
+const Work = lazy(() => import(/* webpackPrefetch: true */ "@pages/Work.jsx"));
+const Playground = lazy(() => import("@pages/Playground.jsx"));
+const About = lazy(() => import("@pages/About.jsx"));
 import NotFound from "@pages/NotFound"; // Import the NotFound page
 
-const ProjectDetail = lazy(() => import("@components/projects/ProjectDetail"));
+const ProjectDetail = lazy(() =>
+  import("@components/projects/ProjectDetail.jsx")
+);
 
 function App({ projects }) {
   const location = useLocation();

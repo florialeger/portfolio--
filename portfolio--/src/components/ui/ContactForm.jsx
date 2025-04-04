@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
-import { Text } from "@components/ui/Text";
-import { ArrowRightIcon } from "@components/ui/icon/SignIcon";
+import { Text } from "@components/ui/Text.jsx";
+import { ArrowRightIcon } from "@components/ui/icon/SignIcon.jsx";
 import "./ContactForm.css";
 
 const ContactForm = ({ onClose }) => {

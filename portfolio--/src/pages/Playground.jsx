@@ -1,10 +1,10 @@
 import React, { useState, useEffect, lazy } from "react";
-import { Text } from "@components/ui/Text";
-import { FadeIn } from "@hooks/FadeIn";
-import { BounceInView } from "@hooks/useBounceInView";
-import PlaygroundFilterMenu from "@components/Playground/PlaygroundFilterMenu";
-import Description from "@components/Playground/Description";
-import Footer from "@components/skeleton/Footer";
+import { Text } from "@components/ui/Text.jsx";
+import { FadeIn } from "@hooks/FadeIn.jsx";
+import { BounceInView } from "@hooks/useBounceInView.jsx";
+import PlaygroundFilterMenu from "@components/Playground/PlaygroundFilterMenu.jsx";
+import Description from "@components/Playground/Description.jsx";
+import Footer from "@components/skeleton/Footer.jsx";
 import "@pages/Pages.css";
 
 const Card = lazy(() => import("@ui/Card"));

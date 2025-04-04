@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { Text } from "@ui/Text";
+import { Text } from "@ui/Text.jsx";
 import { motion } from "framer-motion";
-import { ChevronRightIcon } from "@ui/icon/SignIcon";
+import { ChevronRightIcon } from "@ui/icon/SignIcon.jsx";
 import "./Project.css";
 
 const DropArrow = ({ width, isActive, color }) => (

@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { useScrollPosition } from "@context/ScrollPositionContext";
-import { Text } from "@ui/Text";
+import { useScrollPosition } from "@context/ScrollPositionContext.jsx";
+import { Text } from "@ui/Text.jsx";
 import "./Card.css";
 
 const CardImage = React.memo(({ src, alt, className }) => (

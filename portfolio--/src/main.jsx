@@ -3,8 +3,8 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
 import { themes } from "@assets/styles/theme.jsx";
-import { ScrollPositionProvider } from "@context/ScrollPositionContext";
-import useScrollRestoration from "@hooks/useScrollRestoration";
+import { ScrollPositionProvider } from "@context/ScrollPositionContext.jsx";
+import useScrollRestoration from "@hooks/useScrollRestoration.jsx";
 import "@/index.css";
 import "@/App.css";
 
@@ -14,11 +14,13 @@ import {
 } from "@components/skeleton/LoadingAnimation/LoadingAnimation.jsx";
 
 // Lazy load main components
-const App = lazy(() => import("./App"));
-const Navigation = lazy(() => import("@components/skeleton/Navigation"));
-const ThemeSwitcher = lazy(() => import("@components/skeleton/ThemeSwitcher"));
+const App = lazy(() => import("./App.jsx"));
+const Navigation = lazy(() => import("@components/skeleton/Navigation.jsx"));
+const ThemeSwitcher = lazy(() =>
+  import("@components/skeleton/ThemeSwitcher.jsx")
+);
 const LoadingScreen = lazy(() =>
-  import("@components/skeleton/LoadingScreen/LoadingScreen")
+  import("@components/skeleton/LoadingScreen/LoadingScreen.jsx")
 );
 
 // Wrapper component for scroll restoration
