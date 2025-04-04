@@ -151,7 +151,7 @@ const ProjectDetailFooter = ({ project }) => (
       {project.support}
     </Text>
     <Text type="p" className="text">
-      {project.created.substring(0, 4)}
+      {project.created}
     </Text>
   </div>
 );
