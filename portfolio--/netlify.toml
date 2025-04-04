@@ -5,3 +5,12 @@
 
 [[plugins]]
   package = "@netlify/plugin-functions-install-core"
+
+  [functions]
+
+    [functions.timeout]
+    # Define any valid properties here, such as external_node_modules
+    external_node_modules = [
+      "module-one",
+      "module-two"
+    ]

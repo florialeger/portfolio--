@@ -22,7 +22,7 @@ const MONGO_URI =
   process.env.MONGO_URI ||
   "mongodb+srv://florialger:W9VZzvZbBI5t0lKF@cluster0.3vy0dvy.mongodb.net/portfolio?retryWrites=true&w=majority";
 mongoose
-  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(MONGO_URI)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
@@ -59,8 +59,8 @@ const Playground = mongoose.model("Playground", playgroundSchema);
 // Routes
 app.get("/.netlify/functions/server/all-items", async (req, res) => {
   try {
-    const projects = await Project.find().lean();
-    const playgrounds = await Playground.find().lean();
+    const projects = await Project.find().limit(10).lean(); // Limit to 10 projects
+    const playgrounds = await Playground.find().limit(10).lean(); // Limit to 10 playgrounds
     const allItems = [
       ...projects.map((item) => ({ ...item, schemaType: "project" })),
       ...playgrounds.map((item) => ({ ...item, schemaType: "playground" })),
@@ -71,6 +71,7 @@ app.get("/.netlify/functions/server/all-items", async (req, res) => {
     res.status(500).json({ message: "Error fetching items", error });
   }
 });
+
 
 app.get("/.netlify/functions/server/projects", async (req, res) => {
   const projects = await Project.find();
