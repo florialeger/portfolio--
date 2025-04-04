@@ -10,7 +10,7 @@ import { useSpring, animated } from "@react-spring/web";
 import { useScrollPosition } from "@context/ScrollPositionContext";
 import "./Project.css";
 import { Text } from "@ui/Text";
-import LoadingAnimation from "@components/skeleton/LoadingAnimation/LoadingAnimation";
+import {LoadingAnimation} from "@components/skeleton/LoadingAnimation/LoadingAnimation";
 import { CrossIcon } from "@ui/icon/SignIcon";
 
 
