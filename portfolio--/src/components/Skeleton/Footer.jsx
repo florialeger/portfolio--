@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Text } from "@components/ui/Text.jsx";
 import { useMousePosition } from "@hooks/useMousePosition.jsx";
-import { LoadingAnimationWithoutComplete } from "@components/skeleton/LoadingAnimation/LoadingAnimation.jsx";
+import { LoadingAnimationWithoutComplete } from "@components/skeleton/LoadingAnimation.jsx";
 import ContactForm from "@components/ui/ContactForm.jsx";
 import useMagneticEffect from "@hooks/useMagneticEffect.jsx";
 import "./Footer.css";

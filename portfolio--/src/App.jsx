@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from "react"; 
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import { LoadingAnimation } from "@components/skeleton/LoadingAnimation/LoadingAnimation.jsx"; 
+import { LoadingAnimation } from "@components/skeleton/LoadingAnimation.jsx"; 
 import "@/App.css";
 
 const Home = lazy(() => import(/* webpackPrefetch: true */ "@pages/Home.jsx"));

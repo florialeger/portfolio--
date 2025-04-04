@@ -11,7 +11,7 @@ import "@/App.css";
 import {
   LoadingAnimation,
   LoadingAnimationWithoutComplete,
-} from "@components/skeleton/LoadingAnimation/LoadingAnimation.jsx";
+} from "@components/skeleton/LoadingAnimation.jsx";
 
 // Lazy load main components
 const App = lazy(() => import("./App.jsx"));
@@ -20,7 +20,7 @@ const ThemeSwitcher = lazy(() =>
   import("@components/skeleton/ThemeSwitcher.jsx")
 );
 const LoadingScreen = lazy(() =>
-  import("@components/skeleton/LoadingScreen/LoadingScreen.jsx")
+  import("@components/skeleton/LoadingScreen.jsx")
 );
 
 // Wrapper component for scroll restoration
