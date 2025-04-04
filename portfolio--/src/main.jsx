@@ -8,15 +8,15 @@ import useScrollRestoration from "@hooks/useScrollRestoration";
 import "@/index.css";
 import "@/App.css";
 
-import { LoadingAnimationWithoutComplete } from "@components/skeleton/LoadingAnimation/LoadingAnimation";
-import LoadingAnimation from "@components/skeleton/LoadingAnimation/LoadingAnimation";
+import {
+  LoadingAnimation,
+  LoadingAnimationWithoutComplete,
+} from "@components/skeleton/LoadingAnimation/LoadingAnimation";
 
 // Lazy load main components
 const App = lazy(() => import("./App"));
 const Navigation = lazy(() => import("@components/skeleton/Navigation"));
-const ThemeSwitcher = lazy(() =>
-  import("@components/skeleton/ThemeSwitcher")
-);
+const ThemeSwitcher = lazy(() => import("@components/skeleton/ThemeSwitcher"));
 const LoadingScreen = lazy(() =>
   import("@components/skeleton/LoadingScreen/LoadingScreen")
 );
@@ -65,7 +65,7 @@ function Main() {
     };
 
     fetchAllItems();
-  }, []); 
+  }, []);
 
   return (
     <StrictMode>

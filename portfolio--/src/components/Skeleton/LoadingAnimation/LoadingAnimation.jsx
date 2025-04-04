@@ -51,22 +51,20 @@ const Bird4 = () => (
 
 const svgs = [<Bird1 />, <Bird2 />, <Bird3 />, <Bird4 />];
 
-// Principal function that uses `onComplete`
-const LoadingAnimation = ({ duration = 1200, onComplete }) => {
+// Change this to a named export
+export const LoadingAnimation = ({ duration = 1200, onComplete }) => { // Added 'export const'
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Cycle through the SVGs every 300ms
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % svgs.length);
     }, 300);
 
-    // Handle visibility and call `onComplete` after the duration
     const timeout = setTimeout(() => {
       setIsVisible(false);
       if (typeof onComplete === "function") {
-        onComplete(); // Notify parent component
+        onComplete();
       }
     }, duration);
 
@@ -74,18 +72,18 @@ const LoadingAnimation = ({ duration = 1200, onComplete }) => {
       clearInterval(interval);
       clearTimeout(timeout);
     };
-  }, [duration, onComplete]); // Ensure dependencies are stable
+  }, [duration, onComplete]);
 
   if (!isVisible) return null;
 
   return (
     <div className="loading-animation">
-    {svgs[currentIndex]}
-  </div>
+      {svgs[currentIndex]}
+    </div>
   );
 };
 
-// Secondary function that doesn't handle `onComplete` (infinite loop)
+// This one is already a correct named export
 export const LoadingAnimationWithoutComplete = ({ id, ...props }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -105,6 +103,3 @@ export const LoadingAnimationWithoutComplete = ({ id, ...props }) => {
     </div>
   );
 };
-
-
-export default LoadingAnimation;
