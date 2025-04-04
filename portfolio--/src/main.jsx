@@ -4,21 +4,21 @@ import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
 import { themes } from "@assets/styles/theme.jsx";
 import { ScrollPositionProvider } from "@context/ScrollPositionContext";
-import useScrollRestoration from "@hooks/useScrollRestoration"; // Import the hook
+import useScrollRestoration from "@hooks/useScrollRestoration";
 import "@/index.css";
 import "@/App.css";
 
-import { LoadingAnimationWithoutComplete } from "@components/skeleton/LoadingAnimation/LoadingAnimation.jsx";
-import LoadingAnimation from "@components/skeleton/LoadingAnimation/LoadingAnimation.jsx";
+import { LoadingAnimationWithoutComplete } from "@components/skeleton/LoadingAnimation/LoadingAnimation";
+import LoadingAnimation from "@components/skeleton/LoadingAnimation/LoadingAnimation";
 
 // Lazy load main components
-const App = lazy(() => import("./App.jsx"));
-const Navigation = lazy(() => import("@components/skeleton/Navigation.jsx"));
+const App = lazy(() => import("./App"));
+const Navigation = lazy(() => import("@components/skeleton/Navigation"));
 const ThemeSwitcher = lazy(() =>
-  import("@components/skeleton/ThemeSwitcher.jsx")
+  import("@components/skeleton/ThemeSwitcher")
 );
 const LoadingScreen = lazy(() =>
-  import("@components/skeleton/LoadingScreen/LoadingScreen.jsx")
+  import("@components/skeleton/LoadingScreen/LoadingScreen")
 );
 
 // Wrapper component for scroll restoration
