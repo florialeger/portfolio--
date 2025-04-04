@@ -4,7 +4,7 @@ import { FadeIn } from "@hooks/FadeIn.jsx";
 import { BounceInView } from "@hooks/useBounceInView.jsx";
 import PlaygroundFilterMenu from "@components/Playground/PlaygroundFilterMenu.jsx";
 import Description from "@components/Playground/Description.jsx";
-import Footer from "@components/skeleton/Footer.jsx";
+import Footer from "@components/Skeleton/Footer.jsx";
 import "@pages/Pages.css";
 
 const Card = lazy(() => import("@ui/Card"));
