@@ -3,7 +3,7 @@ import { Text } from "@components/ui/Text.jsx";
 import {
   DownloadTopIcon,
   DownloadBottomIcon,
-} from "@components/ui/Icon/SignIcon.jsx";
+} from "@components/ui/icon/SignIcon.jsx";
 import "./Button.css";
 
 const ResumeButton = () => {
