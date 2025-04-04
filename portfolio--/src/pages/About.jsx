@@ -2,7 +2,7 @@ import React from "react";
 import Mii from "@ui/Mii.jsx";
 import { Text } from "@ui/Text.jsx";
 import { FadeIn } from "@hooks/FadeIn.jsx";
-import Footer from "@components/Skeleton/Footer.jsx";
+import Footer from "@components/gkeleton/Footer.jsx";
 import ResumeButton from "@components/ui/Button.jsx";
 
 import "@pages/Pages.css";

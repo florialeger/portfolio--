@@ -11,16 +11,16 @@ import "@/App.css";
 import {
   LoadingAnimation,
   LoadingAnimationWithoutComplete,
-} from "@components/Skeleton/LoadingAnimation.jsx";
+} from "@components/gkeleton/LoadingAnimation.jsx";
 
 // Lazy load main components
 const App = lazy(() => import("./App.jsx"));
-const Navigation = lazy(() => import("@components/Skeleton/Navigation.jsx"));
+const Navigation = lazy(() => import("@components/gkeleton/Navigation.jsx"));
 const ThemeSwitcher = lazy(() =>
-  import("@components/Skeleton/ThemeSwitcher.jsx")
+  import("@components/gkeleton/ThemeSwitcher.jsx")
 );
 const LoadingScreen = lazy(() =>
-  import("@components/Skeleton/LoadingScreen.jsx")
+  import("@components/gkeleton/LoadingScreen.jsx")
 );
 
 // Wrapper component for scroll restoration
