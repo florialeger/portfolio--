@@ -19,7 +19,7 @@ const fetchProjectData = async (slug, type, setProject) => {
   try {
     const endpoint = type === "work" ? "projects" : "playgrounds";
     const response = await axios.get(
-      `http://localhost:5000/${endpoint}/${slug}`
+      `/.netlify/functions/server/${endpoint}/${slug}`
     );
     setProject(response.data);
   } catch (error) {

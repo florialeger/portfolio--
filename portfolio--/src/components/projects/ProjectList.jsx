@@ -54,7 +54,7 @@ const ProjectItem = ({
 
 const fetchProjects = async (setYears) => {
   try {
-    const response = await axios.get("http://localhost:5000/projects");
+    const response = await axios.get("/.netlify/functions/server/projects");
     const projectsByYear = response.data.reduce((acc, project) => {
       const year = new Date(project.created).getFullYear();
       if (!acc[year]) acc[year] = [];

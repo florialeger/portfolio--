@@ -3,21 +3,30 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
 const slugify = require("slugify");
+const serverless = require("serverless-http");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Servir les fichiers statiques à partir du répertoire src/assets/img
+// Serve static files (if needed)
 app.use(
   "/assets/img",
   express.static(path.join(__dirname, "../src/assets/img"))
 );
 
-mongoose.connect("mongodb://localhost:27017/portfolio");
+// Connect to MongoDB
+const MONGO_URI =
+  process.env.MONGO_URI ||
+  "mongodb+srv://florialger:W9VZzvZbBI5t0lKF@cluster0.3vy0dvy.mongodb.net/portfolio?retryWrites=true&w=majority";
+mongoose
+  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
+// Schemas
 const projectSchema = new mongoose.Schema({
   title: { type: String, required: true },
   context: String,
@@ -43,31 +52,32 @@ const playgroundSchema = new mongoose.Schema({
   slug: { type: String, unique: true, required: true },
 });
 
+// Models
 const Project = mongoose.model("Project", projectSchema);
 const Playground = mongoose.model("Playground", playgroundSchema);
 
-app.get('/all-items', async (req, res) => {
+// Routes
+app.get("/.netlify/functions/server/all-items", async (req, res) => {
   try {
     const projects = await Project.find().lean();
     const playgrounds = await Playground.find().lean();
     const allItems = [
-      ...projects.map((item) => ({ ...item, schemaType: 'project' })),
-      ...playgrounds.map((item) => ({ ...item, schemaType: 'playground' })),
+      ...projects.map((item) => ({ ...item, schemaType: "project" })),
+      ...playgrounds.map((item) => ({ ...item, schemaType: "playground" })),
     ];
     res.json(allItems);
   } catch (error) {
     console.error("Error fetching all items:", error);
-    res.status(500).json({ message: 'Error fetching items', error });
+    res.status(500).json({ message: "Error fetching items", error });
   }
 });
 
-
-app.get("/projects", async (req, res) => {
+app.get("/.netlify/functions/server/projects", async (req, res) => {
   const projects = await Project.find();
   res.json(projects);
 });
 
-app.get("/projects/:slug", async (req, res) => {
+app.get("/.netlify/functions/server/projects/:slug", async (req, res) => {
   try {
     const project = await Project.findOne({ slug: req.params.slug });
     if (!project) {
@@ -80,7 +90,7 @@ app.get("/projects/:slug", async (req, res) => {
   }
 });
 
-app.post("/projects", async (req, res) => {
+app.post("/.netlify/functions/server/projects", async (req, res) => {
   const { title } = req.body;
   const slug = slugify(title, { lower: true, strict: true });
   const newProject = new Project({ ...req.body, slug });
@@ -88,7 +98,7 @@ app.post("/projects", async (req, res) => {
   res.json(newProject);
 });
 
-app.delete("/projects/:id", async (req, res) => {
+app.delete("/.netlify/functions/server/projects/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const deletedProject = await Project.findByIdAndDelete(id);
@@ -102,7 +112,7 @@ app.delete("/projects/:id", async (req, res) => {
   }
 });
 
-app.put("/projects/:id", async (req, res) => {
+app.put("/.netlify/functions/server/projects/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const updatedProject = await Project.findByIdAndUpdate(id, req.body, {
@@ -115,12 +125,12 @@ app.put("/projects/:id", async (req, res) => {
 });
 
 // Routes for Playground
-app.get("/playgrounds", async (req, res) => {
+app.get("/.netlify/functions/server/playgrounds", async (req, res) => {
   const playgrounds = await Playground.find();
   res.json(playgrounds);
 });
 
-app.get("/playgrounds/:slug", async (req, res) => {
+app.get("/.netlify/functions/server/playgrounds/:slug", async (req, res) => {
   const { slug } = req.params;
   const playground = await Playground.findOne({ slug });
   if (playground) {
@@ -130,7 +140,7 @@ app.get("/playgrounds/:slug", async (req, res) => {
   }
 });
 
-app.post("/playgrounds", async (req, res) => {
+app.post("/.netlify/functions/server/playgrounds", async (req, res) => {
   const { title } = req.body;
   const slug = slugify(title, { lower: true, strict: true });
   const newPlayground = new Playground({ ...req.body, slug });
@@ -138,7 +148,7 @@ app.post("/playgrounds", async (req, res) => {
   res.json(newPlayground);
 });
 
-app.delete("/playgrounds/:id", async (req, res) => {
+app.delete("/.netlify/functions/server/playgrounds/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const deletedPlayground = await Playground.findByIdAndDelete(id);
@@ -152,7 +162,7 @@ app.delete("/playgrounds/:id", async (req, res) => {
   }
 });
 
-app.put("/playgrounds/:id", async (req, res) => {
+app.put("/.netlify/functions/server/playgrounds/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const updatedPlayground = await Playground.findByIdAndUpdate(id, req.body, {
@@ -164,6 +174,5 @@ app.put("/playgrounds/:id", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Export the app as a serverless function
+module.exports.handler = serverless(app);

@@ -46,28 +46,28 @@ function Main() {
   }, [theme]);
 
   // Fetch data
-  useEffect(() => {
-    const fetchAllItems = async () => {
-      setIsFetchingData(true);
-      setIsLoadingAnimationActive(true);
-      try {
-        const response = await axios.get("http://localhost:5000/all-items");
-        setProjects(response.data);
-      } catch (error) {
-        console.error("Error fetching initial data:", error);
-        setProjects([]);
-      } finally {
-        setTimeout(() => {
-          setIsFetchingData(false);
-        }, 1200); // Ensure LoadingAnimation lasts for at least 1.2 seconds
-        setTimeout(() => {
-          setIsLoadingAnimationActive(false);
-        }, 1200); // Ensure LoadingAnimation is visible for 1.2 seconds
-      }
-    };
+useEffect(() => {
+  const fetchAllItems = async () => {
+    setIsFetchingData(true);
+    setIsLoadingAnimationActive(true);
+    try {
+      const response = await axios.get("/.netlify/functions/server/all-items");
+      setProjects(response.data);
+    } catch (error) {
+      console.error("Error fetching initial data:", error);
+      setProjects([]);
+    } finally {
+      setTimeout(() => {
+        setIsFetchingData(false);
+      }, 1200);
+      setTimeout(() => {
+        setIsLoadingAnimationActive(false);
+      }, 1200);
+    }
+  };
 
-    fetchAllItems();
-  }, []);
+  fetchAllItems();
+}, []);
 
   return (
     <StrictMode>

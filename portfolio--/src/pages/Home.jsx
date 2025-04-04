@@ -12,7 +12,7 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/projects")
+      .get("/.netlify/functions/server/projects")
       .then((response) => setProjects(response.data.slice(0, 3))) // Display first 3 projects
       .catch((error) => console.error(error));
   }, []);
