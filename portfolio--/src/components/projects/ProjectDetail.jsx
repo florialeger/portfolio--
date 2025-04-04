@@ -49,7 +49,7 @@ const RenderMedia = ({ src, alt }) => {
   return isVideo ? (
     <animated.video
       key={src}
-      src={`../src/assets/img/${src}`}
+      src={`/assets/img/${src}`}
       alt={alt}
       className="secondary-media"
       autoPlay
@@ -60,7 +60,7 @@ const RenderMedia = ({ src, alt }) => {
   ) : (
     <animated.img
       key={src}
-      src={`../src/assets/img/${src}`}
+      src={`/assets/img/${src}`}
       alt={alt}
       className="secondary-media"
       loading="lazy"

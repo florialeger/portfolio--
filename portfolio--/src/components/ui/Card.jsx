@@ -12,14 +12,14 @@ const CardImageContainer = React.memo(({ primaryImage, title }) => (
   <div className="card-image-container">
     {primaryImage?.[0] && (
       <CardImage
-        src={`.././assets/img/${primaryImage[0]}`}
+        src={`/assets/img/${primaryImage[0]}`}
         alt={`${title} primary`}
         className="card-image primary"
       />
     )}
     {primaryImage?.[1] && (
       <CardImage
-        src={`.././assets/img/${primaryImage[1]}`}
+        src={`/assets/img/${primaryImage[1]}`}
         alt={`${title} secondary`}
         className="card-image secondary"
       />
