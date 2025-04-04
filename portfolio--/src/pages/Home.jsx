@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import HomeTitle from "@components/Home/HomeTitle.jsx";
 import HomePresentation from "@components/Home/HomePresentation.jsx";
-import Footer from "@components/gkeleton/Footer.jsx";
+import Footer from "@components/Skeleton/Footer.jsx";
 
 import "./Pages.css";
 
