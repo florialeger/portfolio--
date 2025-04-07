@@ -1,3 +1,5 @@
+// This file defines theme configurations with color palettes and styles for the application.
+
 export const themes = {
   white: {
     backgroundMain:

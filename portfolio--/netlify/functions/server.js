@@ -1,3 +1,6 @@
+// This file defines a serverless Express.js API for managing projects and playgrounds,
+// including CRUD operations and MongoDB integration.
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -59,8 +62,8 @@ const Playground = mongoose.model("Playground", playgroundSchema);
 // Routes
 app.get("/.netlify/functions/server/all-items", async (req, res) => {
   try {
-    const projects = await Project.find().limit(10).lean(); // Limit to 10 projects
-    const playgrounds = await Playground.find().limit(10).lean(); // Limit to 10 playgrounds
+    const projects = await Project.find().lean(); 
+    const playgrounds = await Playground.find().lean();
     const allItems = [
       ...projects.map((item) => ({ ...item, schemaType: "project" })),
       ...playgrounds.map((item) => ({ ...item, schemaType: "playground" })),

@@ -1,3 +1,5 @@
+// This file defines the LoadingScreen component, displayed at the first loading of the site.
+
 import React, { useEffect } from "react";
 import "./LoadingScreen.css";
 
@@ -48,15 +50,15 @@ const LoadingScreen = ({ onFinished }) => {
             `LoadingScreen: Path or getTotalLength not found for sign index ${currentSign}`
           );
           currentSign++;
-          setTimeout(animateSign, delayBetweenSigns); 
+          setTimeout(animateSign, delayBetweenSigns);
         }
       } else {
         const finishTimeout = setTimeout(() => {
           if (typeof onFinished === "function") {
-            onFinished(false); 
+            onFinished(false);
           }
         }, 800);
-        return () => clearTimeout(finishTimeout); 
+        return () => clearTimeout(finishTimeout);
       }
     }
 

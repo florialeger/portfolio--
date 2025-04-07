@@ -1,3 +1,5 @@
+// This file defines the useSpringEnter hook, providing spring-based animation controls for smooth element entry transitions.
+
 import { useEffect } from "react";
 import { useAnimation } from "framer-motion";
 

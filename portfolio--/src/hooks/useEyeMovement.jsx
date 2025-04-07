@@ -1,3 +1,5 @@
+// This file defines the useEyeMovement hook, enabling eye-tracking animations by calculating eye positions based on mouse movement.
+
 import { useState, useEffect, useRef } from "react";
 
 export function useEyeMovement() {
@@ -10,7 +12,8 @@ export function useEyeMovement() {
       if (!miiContainerRef.current) return;
 
       const { clientX, clientY } = e;
-      const { left, top, width, height } = miiContainerRef.current.getBoundingClientRect();
+      const { left, top, width, height } =
+        miiContainerRef.current.getBoundingClientRect();
 
       const leftEyeX = left + (110 / 295) * width;
       const leftEyeY = top + (199.5 / 364) * height;
@@ -29,13 +32,25 @@ export function useEyeMovement() {
       const maxDistanceYDown = 4;
 
       const ratioLeftX = Math.min(maxDistanceX / Math.abs(deltaXLeft), 1);
-      const ratioLeftY = deltaYLeft < 0 ? Math.min(maxDistanceYUp / Math.abs(deltaYLeft), 1) : Math.min(maxDistanceYDown / Math.abs(deltaYLeft), 1);
-      
+      const ratioLeftY =
+        deltaYLeft < 0
+          ? Math.min(maxDistanceYUp / Math.abs(deltaYLeft), 1)
+          : Math.min(maxDistanceYDown / Math.abs(deltaYLeft), 1);
+
       const ratioRightX = Math.min(maxDistanceX / Math.abs(deltaXRight), 1);
-      const ratioRightY = deltaYRight < 0 ? Math.min(maxDistanceYUp / Math.abs(deltaYRight), 1) : Math.min(maxDistanceYDown / Math.abs(deltaYRight), 1);
-      
-      setLeftEyePosition({ x: deltaXLeft * ratioLeftX, y: deltaYLeft * ratioLeftY });
-      setRightEyePosition({ x: deltaXRight * ratioRightX, y: deltaYRight * ratioRightY });
+      const ratioRightY =
+        deltaYRight < 0
+          ? Math.min(maxDistanceYUp / Math.abs(deltaYRight), 1)
+          : Math.min(maxDistanceYDown / Math.abs(deltaYRight), 1);
+
+      setLeftEyePosition({
+        x: deltaXLeft * ratioLeftX,
+        y: deltaYLeft * ratioLeftY,
+      });
+      setRightEyePosition({
+        x: deltaXRight * ratioRightX,
+        y: deltaYRight * ratioRightY,
+      });
     };
 
     window.addEventListener("mousemove", handleMouseMove);

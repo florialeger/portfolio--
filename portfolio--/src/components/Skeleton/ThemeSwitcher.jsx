@@ -1,3 +1,5 @@
+// This file defines the ThemeSwitcher component, allowing users to switch themes interactively with animations and a color wheel interface.
+
 import { useState, useRef } from "react";
 import useThemeMotion from "@hooks/useThemeMotion.jsx";
 import { themes } from "@assets/styles/theme.jsx";
@@ -64,7 +66,11 @@ const ThemeSwitcher = ({ currentTheme, setCurrentTheme, setTheme }) => {
       {Object.keys(themes)
         .filter((t) => t !== currentTheme)
         .map((theme) => (
-          <ThemeCircle key={theme} theme={theme} handleThemeChange={handleThemeChange} />
+          <ThemeCircle
+            key={theme}
+            theme={theme}
+            handleThemeChange={handleThemeChange}
+          />
         ))}
     </div>
   );

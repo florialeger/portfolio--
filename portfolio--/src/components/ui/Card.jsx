@@ -1,3 +1,5 @@
+// This file defines the Card component, displaying project/ playgrounds details with images and navigation to detailed views on click.
+
 import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useScrollPosition } from "@context/ScrollPositionContext.jsx";

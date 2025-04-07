@@ -1,3 +1,5 @@
+// This file defines the HomeTitle component, 
+// showcasing UX design and illustration roles with interactive animations and hover effects.
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import useSpringEnter from "@hooks/useSpringEnter.jsx";
@@ -41,6 +43,8 @@ const HomeTitle = () => {
     imageRefs
   );
 
+  // This function sets the hovered type and index when 
+  // the user hovers over an image, enabling interactive effects.
   const handleMouseEnter = (index, type) => {
     setHoveredType(type);
     setHoveredIndex(index);
@@ -58,6 +62,9 @@ const HomeTitle = () => {
       animate={controls}
       ref={containerRef}
     >
+      {/* This section renders a container with interactive images. */}
+      {/* Each image reacts to hover events, applying a magnetic effect with transformations, scaling, and grayscale filters. */}
+      {/* Hovered images are highlighted by adjusting opacity, grayscale, and z-index for emphasis. */}
       <div className="home-images-container">
         {images.map((image, index) => (
           <motion.img
@@ -67,6 +74,11 @@ const HomeTitle = () => {
             className={`home-image ${image.type}`}
             onMouseEnter={() => handleMouseEnter(index, image.type)}
             onMouseLeave={handleMouseLeave}
+            // This inline style dynamically adjusts the appearance and position of each image based on user interactions:
+            // `transform`: Moves the image using `translate` and scales it based on the magnetic effect positions.
+            // `filter`: Applies a grayscale filter to non-hovered images when a specific type is hovered.
+            // `opacity`: Reduces the opacity of non-hovered images to emphasize the hovered type.
+            // `zIndex`: Brings the hovered image to the front by increasing its z-index.
             style={{
               transform: `translate(${positions[index]?.x || 0}px, ${
                 positions[index]?.y || 0
@@ -86,7 +98,7 @@ const HomeTitle = () => {
       <div className="home-text-container">
         <Text
           type="h1"
-        className="home-title text h1"
+          className="home-title text h1"
           style={{
             color:
               hoveredType === "illustration"

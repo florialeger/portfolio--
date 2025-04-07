@@ -1,3 +1,6 @@
+// This file defines navigation icons with svgs path and hover effects, 
+// providing visual feedback and enhancing user interaction.
+
 import React from "react";
 
 export const PlaygroundIcon = ({ hovered }) => (

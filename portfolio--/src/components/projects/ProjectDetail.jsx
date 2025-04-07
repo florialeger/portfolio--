@@ -1,9 +1,7 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-} from "react";
+// This file defines the ProjectDetail component, displaying detailed 
+// information about a selected project with animations and navigation handling.
+
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useSpring, animated } from "@react-spring/web";
@@ -12,7 +10,6 @@ import "./Project.css";
 import { Text } from "@ui/Text.jsx";
 import { LoadingAnimation } from "@components/Skeleton/LoadingAnimation.jsx";
 import { CrossIcon } from "@ui/icon/SignIcon.jsx";
-
 
 // Utility function to fetch project data
 const fetchProjectData = async (slug, type, setProject) => {
@@ -282,7 +279,7 @@ const ProjectDetail = ({ projects }) => {
         <ProjectDetailImages project={project} />
         <ProjectDetailFooter project={project} />
       </animated.div>
-        <CrossIcon onClick={handleCloseDetail} />
+      <CrossIcon onClick={handleCloseDetail} />
     </div>
   );
 };

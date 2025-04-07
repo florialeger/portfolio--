@@ -1,3 +1,6 @@
+// This file defines the ContactForm component, enabling users to send messages 
+// via email with validation and interactive UI.
+
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import { Text } from "@components/ui/Text.jsx";

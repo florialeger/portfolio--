@@ -1,3 +1,4 @@
+// This file defines the playground Description component.
 import React from "react";
 import { Text } from "@ui/Text.jsx";
 

@@ -1,3 +1,6 @@
+// This file defines the Mii component, rendering an interactive avatar 
+// with tilt and eye-tracking animations.
+
 import React, { useEffect, useRef } from "react";
 import VanillaTilt from "vanilla-tilt";
 import { tiltOptions } from "@hooks/tiltOptions.jsx";

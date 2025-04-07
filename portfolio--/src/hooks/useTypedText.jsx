@@ -1,3 +1,6 @@
+// This file defines the useTypedText hook, creating a typing
+// animation effect for strings with customizable speeds and looping behavior.
+
 import { useState, useEffect, useRef } from "react";
 
 const useTypedText = (strings, typeSpeed = 100, backSpeed = 25) => {
@@ -68,7 +71,17 @@ const useTypedText = (strings, typeSpeed = 100, backSpeed = 25) => {
       const timer = setTimeout(handleTyping, typingSpeed);
       return () => clearTimeout(timer);
     }
-  }, [text, isDeleting, loopNum, typingSpeed, strings, typeSpeed, backSpeed, isTypingComplete, isInView]);
+  }, [
+    text,
+    isDeleting,
+    loopNum,
+    typingSpeed,
+    strings,
+    typeSpeed,
+    backSpeed,
+    isTypingComplete,
+    isInView,
+  ]);
 
   return { text, isBlinking, isTypingComplete, elementRef };
 };

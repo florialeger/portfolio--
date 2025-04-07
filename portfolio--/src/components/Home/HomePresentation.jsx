@@ -1,4 +1,6 @@
-import React from "react";
+// This file defines the HomePresentation component, 
+// introducing me with a brief personal description and animation effects.
+// import React from "react";
 import { Text, MotionText } from "@ui/Text.jsx";
 import { FadeIn } from "@hooks/FadeIn.jsx";
 import "./HomePresentation.css";

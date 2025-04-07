@@ -1,3 +1,5 @@
+// This file provides a context to track and manage the scroll position across the application.
+
 import React, { useState, useEffect, createContext, useContext } from "react";
 
 // Create the context
@@ -6,8 +8,7 @@ export const ScrollPositionContext = createContext();
 export const ScrollPositionProvider = ({ children }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  useEffect(() => {
-  }, [scrollPosition]);
+  useEffect(() => {}, [scrollPosition]);
 
   return (
     <ScrollPositionContext.Provider

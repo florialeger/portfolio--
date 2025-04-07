@@ -1,3 +1,6 @@
+// This file defines the Footer component, providing social links, 
+// a contact form, and interactive animations for user engagement.
+
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Text } from "@components/ui/Text.jsx";
@@ -93,13 +96,9 @@ const ContactMe = () => {
 
   return (
     <div className="contact-me" ref={containerRef}>
-      <img
-        src="/mail.png"
-        alt="Mail Background"
-        className="mail-background"
-      />
+      <img src="/mail.png" alt="Mail Background" className="mail-background" />
       <Text
-        ref={buttonRef} 
+        ref={buttonRef}
         type="button"
         className="contact-button button"
         style={{

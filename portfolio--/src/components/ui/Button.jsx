@@ -1,3 +1,4 @@
+// This file defines the ResumeButton component, providing a styled button with hover animations to download a resume.
 import React, { useState } from "react";
 import { Text } from "@components/ui/Text.jsx";
 import {

@@ -1,3 +1,5 @@
+// This file defines the FadeIn component, adding a smooth fade-in animation to elements when they enter the viewport.
+
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
@@ -16,7 +18,7 @@ const fadeInVariants = {
 
 export const FadeIn = ({ children, duration = 0.5, delay = 0 }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-20% 0px' });
+  const isInView = useInView(ref, { once: true, margin: "-20% 0px" });
 
   return (
     <motion.div

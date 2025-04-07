@@ -1,3 +1,5 @@
+// This file defines the useThemeMotion hook, adding interactive motion effects to the wheel theme based on mouse movement and hover state.
+
 import { useEffect } from "react";
 
 const useThemeMotion = (isHovered, ref) => {

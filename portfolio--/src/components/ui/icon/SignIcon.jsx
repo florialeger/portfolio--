@@ -1,3 +1,5 @@
+// This file defines various SVG icons, including arrows, chevrons, and download indicators, with hover effects and animations.
+
 import React from "react";
 import { motion } from "framer-motion";
 import "./SignIcon.css";
@@ -85,7 +87,7 @@ export const DownloadTopIcon = ({ width, color, strokeWidth }) => (
   <svg
     style={{
       width: `calc(${width})`,
-      height: `calc(${width})`, 
+      height: `calc(${width})`,
     }}
     viewBox="0 0 580 580"
     fill="none"

@@ -1,3 +1,6 @@
+// This file defines the ProjectList component, organizing and displaying projects by year
+//  with expandable sections and interactive animations.
+
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Text } from "@ui/Text.jsx";
@@ -93,37 +96,37 @@ const ProjectList = ({ projects, selectedProject, onProjectClick }) => {
 
   return (
     <div className="project-list">
-   {Object.keys(years)
-  .sort((a, b) => b - a) // Sort years in descending order
-  .map((year) => (
-    <div key={year}>
-      <YearHeader
-        year={year}
-        isActive={activeYear === year}
-        toggleYear={toggleYear}
-      />
-      {activeYear === year && (
-        <ul className="project-items">
-          {years[year]
-            .slice() // Create a shallow copy to avoid mutating the original array
-            .sort((a, b) => new Date(b.created) - new Date(a.created)) // Sort projects by date
-            .map((project) => (
-              <ProjectItem
-                key={project._id}
-                project={project}
-                isSelected={
-                  selectedProject && selectedProject._id === project._id
-                }
-                handleProjectClick={onProjectClick}
-                projectRef={(el) =>
-                  (projectRefs.current[project._id] = el)
-                }
-              />
-            ))}
-        </ul>
-      )}
-    </div>
-  ))}
+      {Object.keys(years)
+        .sort((a, b) => b - a) // Sort years in descending order
+        .map((year) => (
+          <div key={year}>
+            <YearHeader
+              year={year}
+              isActive={activeYear === year}
+              toggleYear={toggleYear}
+            />
+            {activeYear === year && (
+              <ul className="project-items">
+                {years[year]
+                  .slice() // Create a shallow copy to avoid mutating the original array
+                  .sort((a, b) => new Date(b.created) - new Date(a.created)) // Sort projects by date
+                  .map((project) => (
+                    <ProjectItem
+                      key={project._id}
+                      project={project}
+                      isSelected={
+                        selectedProject && selectedProject._id === project._id
+                      }
+                      handleProjectClick={onProjectClick}
+                      projectRef={(el) =>
+                        (projectRefs.current[project._id] = el)
+                      }
+                    />
+                  ))}
+              </ul>
+            )}
+          </div>
+        ))}
     </div>
   );
 };

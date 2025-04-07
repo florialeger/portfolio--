@@ -1,3 +1,6 @@
+// This file defines the ProjectDisplay component,
+//  showcasing a list of projects with vertical scrolling and interactive animations.
+
 import React, { useState, useEffect, useRef, useCallback, lazy } from "react";
 import ProjectList from "./ProjectList.jsx";
 import "./Project.css";
@@ -57,7 +60,6 @@ const ProjectDisplay = ({ projects }) => {
       return () => clearTimeout(timer);
     }
   }, [isScrolling]);
-  
 
   return (
     <div className="project-display-container">

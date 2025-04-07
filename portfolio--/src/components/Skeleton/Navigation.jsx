@@ -1,3 +1,5 @@
+// This file defines the Navigation component, providing a responsive navigation bar with hover effects, animations, and menu toggling.
+
 import React, {
   useState,
   useRef,
@@ -108,7 +110,6 @@ const NavLink = memo(
         <Link to={path} className="nav-link-content">
           <IconComponent hovered={hovered === path} />
           <Arrow path={path} hovered={hovered} />
-
         </Link>
       </li>
     );
@@ -119,7 +120,7 @@ const NavHome = memo(({ isActive, closeNav }) => (
   <ul className="nav-links nav-left">
     <li className={`nav-link ${isActive("/") ? "active" : ""}`}>
       <Link to="/" onClick={closeNav} className="home">
-      <NameIcon />
+        <NameIcon />
       </Link>
     </li>
   </ul>
@@ -176,7 +177,7 @@ const MenuButton = memo(({ toggleNav, isNavOpen }) => (
   <div
     className={`menu-button ${isNavOpen ? "open" : "closed"}`}
     onClick={toggleNav}
-    style={{   backdropFilter: "blur(24px)"}}
+    style={{ backdropFilter: "blur(24px)" }}
   >
     {!isNavOpen && (
       <motion.div

@@ -1,3 +1,6 @@
+// This file defines loading animations with cycling SVG illustrations to 
+// enhance user experience during content loading.
+
 import React, { useState, useEffect } from "react";
 import "./LoadingAnimation.css";
 
@@ -52,7 +55,8 @@ const Bird4 = () => (
 const svgs = [<Bird1 />, <Bird2 />, <Bird3 />, <Bird4 />];
 
 // Change this to a named export
-export const LoadingAnimation = ({ duration = 1200, onComplete }) => { // Added 'export const'
+export const LoadingAnimation = ({ duration = 1200, onComplete }) => {
+  // Added 'export const'
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
@@ -76,11 +80,7 @@ export const LoadingAnimation = ({ duration = 1200, onComplete }) => { // Added 
 
   if (!isVisible) return null;
 
-  return (
-    <div className="loading-animation">
-      {svgs[currentIndex]}
-    </div>
-  );
+  return <div className="loading-animation">{svgs[currentIndex]}</div>;
 };
 
 // This one is already a correct named export

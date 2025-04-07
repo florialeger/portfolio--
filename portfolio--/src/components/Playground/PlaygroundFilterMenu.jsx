@@ -1,3 +1,5 @@
+// This file defines the PlaygroundFilterMenu component, allowing users to filter playground items by category with interactive animations.
+
 import React, { useState, useEffect, useRef, memo } from "react";
 import { motion } from "framer-motion";
 import { AllIcon, UxIcon, IllustIcon } from "@ui/icon/NavIcon.jsx";
@@ -38,6 +40,10 @@ const PlaygroundFilterMenu = ({ currentFilter, setFilter }) => {
   const linkRefs = filters.map(() => useRef(null));
   const activeIndex = filters.indexOf(currentFilter);
 
+  // This useEffect hook manages the visibility of the filter menu based on screen width and scroll position.
+  // Hides the menu if the viewport width is less than 680px.
+  // Hides the menu when the user scrolls past the last 100vh of the document.
+  // Adds event listeners for scroll and resize events, and cleans them up on unmount.
   useEffect(() => {
     const handleResizeAndScroll = () => {
       const scrollPosition = window.scrollY;

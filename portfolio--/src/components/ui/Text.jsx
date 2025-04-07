@@ -1,3 +1,5 @@
+// This file defines the Text and MotionText components for rendering styled text and animated typing effects.
+
 import PropTypes from "prop-types";
 import useTypedText from "@hooks/useTypedText.jsx";
 import "./Text.css";
@@ -45,7 +47,6 @@ export const MotionText = ({
     </Tag>
   );
 };
-
 
 Text.propTypes = {
   type: PropTypes.oneOf([
