@@ -4,10 +4,8 @@
   left: 0;
   width: 100vw;
   height: 100px;
-  z-index: 1000; 
-
+  z-index: 1000;
 }
-
 
 .gradient-blur {
   position: fixed;
@@ -112,16 +110,12 @@
   content: "";
   z-index: 8;
   backdrop-filter: blur(64px);
-  mask: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0) 87.5%,
-    rgba(0, 0, 0, 1) 100%
-  );
+  mask: linear-gradient(to top, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 1) 100%);
 }
 
-  .gradient-blur.reduced {
-    height: 18vh;
-  }
+.gradient-blur.reduced {
+  height: 18vh;
+}
 
 .nav-container {
   position: fixed;
@@ -138,8 +132,9 @@
 }
 
 .Navigation.reduced .nav-container {
+  position: absolute;
   padding: 3em 2em 1em 2em;
-  width: 100%;
+  width: 100vw;
   flex-direction: column;
   align-items: end;
   justify-content: start;
@@ -156,7 +151,6 @@
   gap: 1em;
   transition: all 0.3s ease;
 }
-
 
 .nav-links-container {
   position: relative;
@@ -221,7 +215,6 @@
   border-radius: 1em;
   z-index: -1;
   backdrop-filter: blur(16px);
-
 }
 /*
 .arrow {
@@ -233,13 +226,12 @@
   height: 2.2px;
 }*/
 
-
 .arrow {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 24px;
-aspect-ratio: 1;
+  aspect-ratio: 1;
 }
 
 .cross-icon {
@@ -273,15 +265,13 @@ aspect-ratio: 1;
   color: var(--textDefault);
   will-change: width;
   cursor: pointer;
-  transition: width 0.3s ease; 
+  transition: width 0.3s ease;
   width: fit-content;
-
-}  
+}
 
 .menu-button.open {
   padding: 0.8em 0.8em;
 }
-
 
 .menu-button-content {
   padding: 0em 0.5em 0em 0.5em;
@@ -360,12 +350,11 @@ aspect-ratio: 1;
   }
 }
 
-
 .nav-icon {
   transition: stroke-width 0.3s ease, stroke 0.3s ease;
   stroke: var(--textDefault);
 }
 
 .nav-icon.hovered {
-  stroke-width: 36px; 
+  stroke-width: 36px;
 }

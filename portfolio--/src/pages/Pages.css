@@ -1,6 +1,6 @@
 /* Home Page Styles */
 .home-container {
-   display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: start;
   width: 100vw;
@@ -15,7 +15,7 @@
   justify-content: center;
 }
 .home-section:first-child {
-  height:calc(100vh - 18vh);
+  height: calc(100vh - 18vh);
 }
 
 /* Playground Page Styles */
@@ -115,6 +115,22 @@
     width: 13em !important;
   }
 }
+@media (max-width: 680px) {
+  .about-container {
+    width: 100vw;
+  }
+
+  .about-content-container {
+    padding-inline: 2em;
+  }
+  .about-title {
+    padding-inline: 1em;
+  }
+
+  .resume-button {
+    margin-inline: auto;
+  }
+}
 
 /* Work Page Styles */
 .work-container {
@@ -151,7 +167,7 @@
 }
 
 .not-found-text {
-  color: var(--gray-1000); 
+  color: var(--gray-1000);
   line-height: 1.5;
   margin-bottom: 1em;
 }

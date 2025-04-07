@@ -14,7 +14,7 @@ function About() {
         {" "}
         <Text
           type="h1"
-          className="home-title text h1"
+          className="about-title text h1"
           style={{ marginBottom: "calc(1vw + 16px)" }}
         >
           About Me...

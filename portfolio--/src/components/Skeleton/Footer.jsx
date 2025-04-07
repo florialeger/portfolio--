@@ -99,7 +99,7 @@ const ContactMe = () => {
         className="mail-background"
       />
       <Text
-        ref={buttonRef} // Attach the ref to the button
+        ref={buttonRef} 
         type="button"
         className="contact-button button"
         style={{

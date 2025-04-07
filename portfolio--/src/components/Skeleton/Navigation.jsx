@@ -240,9 +240,10 @@ const MenuDropMotion = ({ isNavOpen, toggleNav }) => {
 };
 
 const HomeIcon = memo(({ path, width }) => (
-  <img src={`/${path}.svg`} alt={`${path} Logo`} width={width} />
+  <img src={`/${path}.png`} alt={`${path} Logo`} width={width} />
 ));
 
+// creates lags
 // const DecorationIcon = ({ isNavOpen }) => (
 //   <>
 //     {isNavOpen && (

@@ -11,7 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Serve static files (if needed)
+// Serve static files
 app.use(
   "/assets/img",
   express.static(path.join(__dirname, "../src/assets/img"))
@@ -71,7 +71,6 @@ app.get("/.netlify/functions/server/all-items", async (req, res) => {
     res.status(500).json({ message: "Error fetching items", error });
   }
 });
-
 
 app.get("/.netlify/functions/server/projects", async (req, res) => {
   const projects = await Project.find();

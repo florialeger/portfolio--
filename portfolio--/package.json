@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "node server/server.js",
+    "server": "node netlify/functions/server.js",
     "client": "vite",
     "start": "concurrently \"npm run server\" \"npm run client\""
   },

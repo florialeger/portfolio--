@@ -1,5 +1,6 @@
 .footer {
   height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,12 +71,14 @@
 .contact-me {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  left: 0;
+  width: 100vw;
   height: 30vh;
   display: flex;
   justify-content: center;
   align-items: bottom;
   z-index: 1;
+  overflow: hidden;
 }
 
 .mail-background {
@@ -104,7 +107,6 @@
 
 }
 
-/* Responsive Styles for Screens with Max Width of 680px */
 @media (max-width: 680px) {
   .get-in-touch {
     flex-direction: column;

@@ -5,6 +5,7 @@
   justify-content: center;
   width: 100%;
   gap: 2.5em;
+  overflow: hidden;
 }
 
 .home-title {
