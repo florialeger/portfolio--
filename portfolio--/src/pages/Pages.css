@@ -13,6 +13,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+
 }
 .home-section:first-child {
   height: calc(100vh - 18vh);
