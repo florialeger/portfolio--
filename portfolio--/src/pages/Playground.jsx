@@ -1,3 +1,6 @@
+// This file defines the Playground page, showcasing a collection of
+// playground projects with filtering, animations, and preloaded images.
+
 import React, { useState, useEffect, lazy } from "react";
 import { Text } from "@components/ui/Text.jsx";
 import { FadeIn } from "@hooks/FadeIn.jsx";
@@ -40,7 +43,7 @@ const PlaygroundGrid = ({ filteredPlaygrounds, Card }) => {
   );
 };
 
- const preloadCriticalImages = (playgrounds) => {
+const preloadCriticalImages = (playgrounds) => {
   const preloadImage = (src) => {
     return new Promise((resolve) => {
       const img = new Image();
@@ -57,7 +60,6 @@ const PlaygroundGrid = ({ filteredPlaygrounds, Card }) => {
   return Promise.all(criticalImages);
 };
 
-
 function Playground({ projects }) {
   const [playgrounds, setPlaygrounds] = useState([]);
   const [filteredPlaygrounds, setFilteredPlaygrounds] = useState([]);
@@ -69,7 +71,7 @@ function Playground({ projects }) {
       (item) => item.schemaType === "playground"
     );
 
-    // Sort playgrounds by the "created" field 
+    // Sort playgrounds by the "created" field
     const sortedPlaygrounds = [...playgroundProjects].sort(
       (a, b) => new Date(b.created) - new Date(a.created)
     );
@@ -102,12 +104,12 @@ function Playground({ projects }) {
   }, [filter, playgrounds]);
 
   // Scroll to the top of the grid when the filter changes
- useEffect(() => {
-   const gridElement = document.querySelector(".playground-content-container");
-   if (gridElement) {
-     gridElement.scrollIntoView({ behavior: "smooth", block: "start" });
-   }
- }, [filter]);
+  useEffect(() => {
+    const gridElement = document.querySelector(".playground-content-container");
+    if (gridElement) {
+      gridElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [filter]);
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
@@ -130,7 +132,7 @@ function Playground({ projects }) {
         currentFilter={filter}
         setFilter={handleFilterChange}
       />
-      <Footer/>
+      <Footer />
     </div>
   );
 }

@@ -1,50 +1,45 @@
-# React + Vite
+# Floria Leger - Interactive Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Demo: [https://florialger.netlify.app/](https://florialger.netlify.app/)**
 
-Currently, two official plugins are available:
+## 🎯 About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is a personal interactive portfolio designed to merge technical skills (React, Node.js) and artistic abilities (drawing, UX/UI design). It serves to highlight my hybrid profile and experiment with web animations, primarily aimed at supporting my search for a UX/UI apprenticeship.
 
+## 🛠️ Tech Stack
 
-# Portfolio Installation Guide
+*   **Frontend:** React, Vite, Framer Motion, CSS
+*   **Backend:** Node.js, Express, Netlify Functions
+*   **Database:** MongoDB Atlas
+*   **Hosting:** Netlify
 
-Follow these steps to set up and run the project locally.
+## 🚀 Local Setup
 
-## Prerequisites
+To run this project locally, follow these steps:
 
-Ensure you have the following installed on your system:
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/florialeger/portfolio.git
+    ```
+2.  **Navigate to the project directory:**
+    ```bash
+    cd portfolio--
+    ```
+3.  **Install project dependencies:**
+    ```bash
+    npm install
+    ```
 
-- [Node.js](https://nodejs.org/) (LTS version recommended)
-- [npm](https://www.npmjs.com/) (comes with Node.js)
+4.  **Install Netlify CLI globally** (if you haven't already):
+    ```bash
+    npm install netlify-cli -g
+    ```
+    *(This is required to run the local development environment that includes Netlify Functions.)*
 
-## Installation Steps
+5.  **Start the development server:**
+    ```bash
+    netlify dev
+    ```
+    *(This command starts the Vite development server for the frontend and emulates Netlify Functions for the backend.)*
 
-1. **Clone the Repository**  
-    Clone the project repository to your local machine:
-
-   ```bash
-   git clone https://github.com/florialeger/portfolio.git
-
-   npm install
-   npm install react-router-dom
-   npm install framer-motion
-   npm install vanilla-tilt
-   npm install corner-smoothing
-   npm install react-hook-inview
-   npm install @react-spring/web --legacy-peer-deps
-   npm install concurrently --save-dev
-   npm install axios
-   npm install vite-plugin-static-copy --save-dev
-   npm install slugify
-   npm install react-scan
-
-   cd portfolio--
- 
-   # For running the front-end only
-   npm run dev
-   
-   # For running both front-end and back-end
-   npm run start
-   ```
+The application should now be running locally, typically at `http://localhost:8888`.

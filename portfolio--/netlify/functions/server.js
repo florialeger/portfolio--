@@ -1,6 +1,5 @@
 // This file defines a serverless Express.js API for managing projects and playgrounds,
 // including CRUD operations and MongoDB integration.
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");

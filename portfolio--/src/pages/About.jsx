@@ -1,3 +1,6 @@
+// This file defines the About page, presenting personal information, skills,
+//  and interests with animations and interactive elements.
+
 import React from "react";
 import Mii from "@ui/Mii.jsx";
 import { Text } from "@ui/Text.jsx";

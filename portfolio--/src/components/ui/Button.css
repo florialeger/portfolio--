@@ -4,7 +4,7 @@
   justify-content: center;
   gap: 0.8em;
   padding: 0.5em 3em 1.2em 3em;
-  background-color: var(--colorPrimary6);
+  background-color: var(--gray-1000);
   border-radius: 100px;
   text-decoration: none;
   cursor: pointer;

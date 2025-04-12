@@ -1,3 +1,6 @@
+// This file initializes the React application, managing theme, data fetching, 
+// and rendering the main components with lazy loading and scroll restoration.
+
 import React, { StrictMode, useState, useEffect, Suspense, lazy } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -46,28 +49,30 @@ function Main() {
   }, [theme]);
 
   // Fetch data
-useEffect(() => {
-  const fetchAllItems = async () => {
-    setIsFetchingData(true);
-    setIsLoadingAnimationActive(true);
-    try {
-      const response = await axios.get("/.netlify/functions/server/all-items");
-      setProjects(response.data);
-    } catch (error) {
-      console.error("Error fetching initial data:", error);
-      setProjects([]);
-    } finally {
-      setTimeout(() => {
-        setIsFetchingData(false);
-      }, 1200);
-      setTimeout(() => {
-        setIsLoadingAnimationActive(false);
-      }, 1200);
-    }
-  };
+  useEffect(() => {
+    const fetchAllItems = async () => {
+      setIsFetchingData(true);
+      setIsLoadingAnimationActive(true);
+      try {
+        const response = await axios.get(
+          "/.netlify/functions/server/all-items"
+        );
+        setProjects(response.data);
+      } catch (error) {
+        console.error("Error fetching initial data:", error);
+        setProjects([]);
+      } finally {
+        setTimeout(() => {
+          setIsFetchingData(false);
+        }, 1200);
+        setTimeout(() => {
+          setIsLoadingAnimationActive(false);
+        }, 1200);
+      }
+    };
 
-  fetchAllItems();
-}, []);
+    fetchAllItems();
+  }, []);
 
   return (
     <StrictMode>

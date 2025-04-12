@@ -1,3 +1,6 @@
+// This file defines the NotFound page, displaying a 404 error message with an 
+// illustration for unavailable routes.
+
 import React from "react";
 import { Text } from "@components/ui/Text.jsx";
 import "./Pages.css";

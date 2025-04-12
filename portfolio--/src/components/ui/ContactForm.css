@@ -12,9 +12,6 @@
   z-index: 5;
 }
 
-
-
-
 .contact-form {
   background: var(--gray-50);
   border: 2px solid var(--gray-200);
@@ -23,18 +20,27 @@
   flex-direction: column;
   justify-content: space-between;
   height: 70vh;
-  width: 60vw;
+  width: 50vw;
+  min-width: calc(340px - 48px);
   padding: 2em;
   border-radius: 1em;
-  position: fixed;
-  top: 15vh;
-  left: 20vw;
-  margin: auto;
   overflow-y: auto;
   z-index: 1001;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
+@media (max-width: 680px) {
+
+  .contact-form {
+  padding: 1em;
+  }
+
+  .form-fields-container {
+  gap: 0.5em;
+}
+}
+
 
 .form-fields-container {
   display: flex;
