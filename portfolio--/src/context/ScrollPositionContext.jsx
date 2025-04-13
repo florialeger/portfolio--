@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, createContext, useContext } from "react";
 
-// Create the context
 export const ScrollPositionContext = createContext();
 
 export const ScrollPositionProvider = ({ children }) => {
@@ -19,5 +18,4 @@ export const ScrollPositionProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use the context
 export const useScrollPosition = () => useContext(ScrollPositionContext);

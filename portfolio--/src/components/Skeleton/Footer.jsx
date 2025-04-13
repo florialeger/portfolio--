@@ -85,29 +85,13 @@ const GetInTouch = () => (
 const ContactMe = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
-  // Refs for the container and the button
-  const containerRef = useRef(null);
-  const buttonRef = useRef(null);
-
-  // Use the magnetic effect hook
-  const [positions, setHoveredIndex] = useMagneticEffect(containerRef, [
-    buttonRef,
-  ]);
 
   return (
-    <div className="contact-me" ref={containerRef}>
+    <div className="contact-me">
       <img src="/mail.png" alt="Mail Background" className="mail-background" />
       <Text
-        ref={buttonRef}
         type="button"
         className="contact-button button"
-        style={{
-          transform: `translate(${positions[0]?.x || 0}px, ${
-            positions[0]?.y || 0
-          }px) scale(${positions[0]?.scale || 1})`,
-        }}
-        onMouseEnter={() => setHoveredIndex(0)} // Set hovered index when mouse enters
-        onMouseLeave={() => setHoveredIndex(null)} // Reset hovered index when mouse leaves
         onClick={(e) => {
           e.stopPropagation();
           setIsFormOpen(true);

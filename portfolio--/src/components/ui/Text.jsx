@@ -17,6 +17,7 @@ export const Text = ({ type = "span", children, className = "", ...props }) => {
     "h4",
     "h5",
     "h6",
+    "button",
   ];
   const Tag = validTags.includes(type) ? type : "p";
 
@@ -60,6 +61,7 @@ Text.propTypes = {
     "h4",
     "h5",
     "h6",
+    "button",
   ]),
   children: PropTypes.node.isRequired,
   className: PropTypes.string,

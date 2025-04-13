@@ -8,7 +8,6 @@ const LoadingScreen = ({ onFinished }) => {
     const signs = document.querySelectorAll(".path");
     if (!signs || signs.length === 0) {
       console.warn("LoadingScreen: SVG paths not found.");
-      // If paths aren't found, maybe finish immediately? Or after a small delay?
       const fallbackTimeout = setTimeout(() => {
         if (typeof onFinished === "function") {
           onFinished(false); // Indicate maybe an issue, or just finish
@@ -23,14 +22,13 @@ const LoadingScreen = ({ onFinished }) => {
 
     function animateSign() {
       if (currentSign < signs.length) {
-        const path = signs[currentSign]?.querySelector("path"); // Optional chaining
+        const path = signs[currentSign]?.querySelector("path"); 
 
         // Check if path exists and has getTotalLength method
         if (path && typeof path.getTotalLength === "function") {
           const length = path.getTotalLength();
-          path.style.strokeDasharray = `${length} ${length}`; // Ensure correct syntax
+          path.style.strokeDasharray = `${length} ${length}`; 
           path.style.strokeDashoffset = length;
-          // Ensure animation name matches CSS if defined elsewhere, or define inline
           path.style.animation = `dash ${animationDurations[currentSign]}s ease-in-out forwards`;
 
           const animationEndHandler = () => {

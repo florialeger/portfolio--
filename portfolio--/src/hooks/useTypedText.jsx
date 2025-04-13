@@ -17,44 +17,51 @@ const useTypedText = (strings, typeSpeed = 100, backSpeed = 25) => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          // Start the typing animation when the element is in view.
           setIsInView(true);
+          // Disconnect the observer to avoid redundant checks.
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 } // Trigger when at least 10% of the element is visible.
     );
 
     if (elementRef.current) {
+      // Observe the element for visibility changes.
       observer.observe(elementRef.current);
     }
 
     return () => {
       if (observer && elementRef.current) {
+        // Clean up the observer when the component unmounts.
         observer.unobserve(elementRef.current);
       }
     };
-  }, []);
+  }, []); // Run this effect only once on mount.
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView) return; // Do nothing if the element is not in view.
 
     const handleTyping = () => {
-      const i = loopNum % strings.length;
-      const fullText = strings[i];
+      const i = loopNum % strings.length; // Determine the current string to type.
+      const fullText = strings[i]; // Get the full text of the current string.
 
+      // Update the text state based on whether we are typing or deleting.
       setText(
         isDeleting
           ? fullText.substring(0, text.length - 1)
           : fullText.substring(0, text.length + 1)
       );
 
+      // Adjust the typing speed based on the current action (typing or deleting).
       setTypingSpeed(isDeleting ? backSpeed : typeSpeed);
 
+      // Check if the full text has been typed out.
       if (!isDeleting && text === fullText) {
         setIsBlinking(true);
         setTimeout(() => {
-          setIsDeleting(true);
-          setIsTypingComplete(true);
+          setIsDeleting(true); // Start deleting after a delay.
+          setIsTypingComplete(true); // Mark the typing as complete.
           setIsBlinking(false);
         }, 5000);
       } else if (isDeleting && text === "") {

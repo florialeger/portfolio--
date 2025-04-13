@@ -47,9 +47,9 @@ const BackgroundSlider = memo(({ activeIndex, linkRefs, hoveredIndex }) => {
       className="background-slider"
       initial={{ x: 0, width: 0 }}
       animate={{
-        opacity: activeLinkRef ? 1 : 0,
-        x: activeLinkRef ? activeLinkRef.offsetLeft : 0,
-        width: activeLinkRef ? activeLinkRef.offsetWidth : 0,
+        opacity: activeLinkRef ? 1 : 0, // Show the slider only when a link is active or hovered.
+        x: activeLinkRef ? activeLinkRef.offsetLeft : 0, // Position the slider under the active/hovered link.
+        width: activeLinkRef ? activeLinkRef.offsetWidth : 0, // Match the slider's width to the link's width.
       }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       style={{
@@ -281,6 +281,7 @@ const HomeIcon = memo(({ path, width }) => (
 const Navigation = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const location = useLocation();
+  // Function to check if a given path matches the current location.
   const isActive = useCallback(
     (path) => location.pathname === path,
     [location.pathname]
@@ -291,7 +292,9 @@ const Navigation = () => {
   const toggleNav = useCallback(() => setIsNavOpen((prev) => !prev), []);
   const closeNav = useCallback(() => setIsNavOpen(false), []);
 
+  // Create refs for each navigation link (used for positioning the background slider).
   const linkRefs = navItems.slice(1).map(() => useRef(null));
+  // Determine the index of the currently active navigation link.
   const activeIndex = useMemo(
     () =>
       navItems.slice(1).findIndex((item) => item.path === location.pathname),
@@ -303,18 +306,24 @@ const Navigation = () => {
       setIsReduced(window.innerWidth < 680);
     }, 300);
 
+    // Attach the resize event listener.
     window.addEventListener("resize", handleResize);
+
     return () => {
+      // Clean up the resize event listener when the component unmounts.
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
     <nav className={`Navigation ${isReduced ? "reduced" : ""}`}>
+      {/* Add a class to the navigation bar based on the `isReduced` state. */}
       <BlurOverlay isReduced={isReduced} />
       <div className={`nav-container ${isNavOpen ? "active" : ""}`}>
+        {/* Conditionally render desktop or mobile navigation based on `isReduced`. */}
         {!isReduced && (
           <>
+            {/* Desktop Navigation */}
             <NavHome isActive={isActive} closeNav={closeNav} />
             <NavRightLinks
               isActive={isActive}
@@ -327,6 +336,7 @@ const Navigation = () => {
         )}
         {isReduced && (
           <>
+            {/* Mobile Navigation */}
             <MenuButton
               toggleNav={toggleNav}
               isNavOpen={isNavOpen}

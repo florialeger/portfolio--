@@ -43,13 +43,16 @@ const Card = React.memo(({ project }) => {
   const { setScrollPosition } = useScrollPosition();
 
   const handleOpenDetail = useCallback(() => {
-    const currentScrollPosition = window.scrollY; // Save the scroll position of the parent page
+    // Save the current scroll position of the parent page. This is critical for restoring the scroll position when navigating back.
+    const currentScrollPosition = window.scrollY;
+
+    // Use the `setScrollPosition` function from the `ScrollPositionContext` to store the scroll position globally.
     setScrollPosition(currentScrollPosition);
 
     const path =
       project.schemaType === "playground"
-        ? `/playground/${project.slug}`
-        : `/work/${project.slug}`;
+        ? `/playground/${project.slug}` // Navigate to the playground detail page if the project is a playground.
+        : `/work/${project.slug}`; // Otherwise, navigate to the work detail page.
 
     navigate(path, { state: { project } }); // Pass the project data via state
   }, [navigate, project, setScrollPosition]);

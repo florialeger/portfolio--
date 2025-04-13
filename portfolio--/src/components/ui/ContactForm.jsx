@@ -15,10 +15,12 @@ const ContactForm = ({ onClose }) => {
     message: "Type Your Message…",
   });
 
+  // Validate the form by checking if all required fields are filled.
   const isFormValid = formData.name && formData.from && formData.message;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // Dynamically update the form state based on the input field's name and value.
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -27,38 +29,42 @@ const ContactForm = ({ onClose }) => {
       e.target.name === "message" &&
       e.target.value === "Type Your Message…"
     ) {
+      // Clear the placeholder text when the message field gains focus.
       setFormData((prev) => ({ ...prev, message: "" }));
     }
   };
 
   const handleBlur = (e) => {
     if (e.target.name === "message" && e.target.value === "") {
+      // Reset the placeholder text if the message field is left empty after losing focus.
       setFormData((prev) => ({ ...prev, message: "Type Your Message…" }));
     }
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent the default form submission behavior.
     if (isFormValid) {
       emailjs
         .send(
-          "service_t0uahlh", // Service ID
-          "template_hj955qg", // Template ID
+          "service_t0uahlh", // Service ID for emailjs.
+          "template_hj955qg", // Template ID for the email template.
           {
             subject: formData.subject,
             name: formData.name,
             from_email: formData.from,
             message: formData.message,
           },
-          "as8u83pDvkyDqS7Me" // Public Key
+          "as8u83pDvkyDqS7Me" // Public key for emailjs authentication.
         )
         .then(
           (result) => {
             console.log("Email sent successfully:", result.text);
+            // Notify the user of successful email sending.
             alert("Your message has been sent!");
           },
           (error) => {
             console.error("Error sending email:", error.text);
+            // Notify the user if an error occurs during email sending.
             alert("An error occurred. Please try again.");
           }
         );
